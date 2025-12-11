@@ -1,9 +1,11 @@
+// src/const/imgconst.ts
+
 // Helper to convert raw SVG to data URI
 export const toDataUri = (svg: string) =>
   `data:image/svg+xml,${encodeURIComponent(svg)}`;
 
 // -----------------------------------------------------------------------------
-// SVG sources
+// Raw SVG sources
 // -----------------------------------------------------------------------------
 
 const darkSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
@@ -24,6 +26,7 @@ const darkSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
   <text x='720' y='95' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='42' font-weight='700' fill='#e6f2ff'>BMW</text>
   <text x='720' y='135' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='16' fill='#8fb6ff'>M Power Inspired</text>
 </svg>`;
+
 const lightSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
   <defs>
     <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
@@ -42,6 +45,7 @@ const lightSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
   <text x='720' y='95' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='42' font-weight='700' fill='#0c2a52'>BMW</text>
   <text x='720' y='135' text-anchor='end' font-family='Arial, Helvetica, sans-serif' font-size='16' fill='#2a7ac2'>Connected Drive</text>
 </svg>`;
+
 const tyreSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'>
   <defs>
     <radialGradient id='bg' cx='0.32' cy='0.38' r='0.85'>
@@ -62,13 +66,14 @@ const tyreSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'>
     <circle cx='260' cy='75' r='7'/>
   </g>
 </svg>`;
+
 const spinnerSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
   <circle cx='60' cy='60' r='50' fill='none' stroke='#1c6cd4' stroke-width='10' opacity='0.25'/>
   <path d='M110 60a50 50 0 0 1-50 50' fill='none' stroke='#2a86ff' stroke-width='10' stroke-linecap='round'/>
 </svg>`;
 
 // -----------------------------------------------------------------------------
-// Encoded simple icons
+// Encoded simple icons (already as data URIs)
 // -----------------------------------------------------------------------------
 
 export const carBlockedIcon =
@@ -85,10 +90,12 @@ export const amgBlack = toDataUri(darkSvg);
 export const amgWhite = toDataUri(lightSvg);
 export const tyreBg = toDataUri(tyreSvg);
 export const logoLoading = toDataUri(spinnerSvg);
+
 // -----------------------------------------------------------------------------
 // Central image map and types
 // -----------------------------------------------------------------------------
 
+export const IMAGE = {
   amgBlack,
   amgWhite,
   tyreBg,
@@ -96,5 +103,6 @@ export const logoLoading = toDataUri(spinnerSvg);
   carBlockedIcon,
   carLocationIcon,
 };
+
 export type ImageMap = typeof IMAGE;
 export type ImageKey = keyof ImageMap;
