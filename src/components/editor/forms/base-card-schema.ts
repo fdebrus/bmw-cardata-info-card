@@ -81,21 +81,3 @@ export const THEME_CONFIG_SCHEMA = [
     ],
   },
 ] as const;
-
-export const SERVICE_SCHEMA = memoizeOne(
-  (options: { value: string; label: string }[]) =>
-    [
-      {
-        name: 'services',
-        type: 'grid',
-        schema: [
-          ...options.map((option) => ({
-            name: option.value,
-            label: option.label,
-            type: 'boolean',
-            default: false,
-          })),
-        ],
-      },
-    ] as const
-);
