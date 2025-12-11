@@ -1,7 +1,21 @@
+<a id="v0.1.3"></a>
+# [bmw-cardata-info-card v0.1.3](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.3) - 2025-12-11
+
+test
+
+[Changes][v0.1.3]
+
+
 <a id="v0.1.1"></a>
 # [bmw-cardata-info-card v0.1.1](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.1) - 2025-12-11
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.1 -->
+
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.0...v0.1.1
 
 [Changes][v0.1.1]
 
@@ -28,6 +42,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.3]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.1...v0.1.3
 [v0.1.1]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/fdebrus/bmw-cardata-info-card/tree/v0.1.0
 
