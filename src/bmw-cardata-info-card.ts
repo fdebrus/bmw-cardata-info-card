@@ -375,7 +375,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
     const loadingEl = html`
       <div class="loading-image" style="height: ${this._calculateCardHeight}px">
-        <img src="${IMAGE.LOADING}" alt="Loading" />
+        <img src="${IMAGE.logoLoading}" alt="Loading" />
       </div>
     `;
 
@@ -778,7 +778,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   private _renderDefaultTyreCard(): TemplateResult {
     if (!this.DataKeys.tyrePressures) return html``;
     const tireConfig = this.config?.extra_configs?.tire_card_custom || {};
-    const customTyreBg = tireConfig?.background || IMAGE.BACK_TYRE;
+    const customTyreBg = tireConfig?.background || IMAGE.tyreBg;
     const isHorizontal = tireConfig?.horizontal ?? false;
     const tireImageSize = tireConfig?.image_size ?? 100;
     const tireValueSize = tireConfig?.value_size ?? 100;
@@ -1499,7 +1499,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   /* ---------------------------- COMPUTE CARD STYLES & CLASSES ---------------------------- */
   private _computeCardStyles() {
     // if (!this._resizeInitiated) return;
-    const backgroundUrl = this.isDark ? IMAGE.BACK_WHITE : IMAGE.BACK_DARK;
+    const backgroundUrl = this.isDark ? IMAGE.amgWhite : IMAGE.amgBlack;
     return styleMap({
       '--vic-background-image': this.config.show_background ? `url(${backgroundUrl})` : 'none',
     });
