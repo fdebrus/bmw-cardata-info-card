@@ -146,7 +146,36 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
   public setConfig(config: VehicleCardConfig): void {
     this.config = {
+      ...defaultConfig,
       ...config,
+      map_popup_config: {
+        ...defaultConfig.map_popup_config,
+        ...config.map_popup_config,
+      },
+      selected_theme: {
+        ...defaultConfig.selected_theme,
+        ...config.selected_theme,
+      },
+      extra_configs: {
+        ...defaultConfig.extra_configs,
+        ...config.extra_configs,
+        tire_card_custom: {
+          ...defaultConfig.extra_configs.tire_card_custom,
+          ...config.extra_configs?.tire_card_custom,
+        },
+        images_swipe: {
+          ...defaultConfig.extra_configs.images_swipe,
+          ...config.extra_configs?.images_swipe,
+        },
+      },
+      button_grid: {
+        ...defaultConfig.button_grid,
+        ...config.button_grid,
+      },
+      use_custom_cards: {
+        ...defaultConfig.use_custom_cards,
+        ...config.use_custom_cards,
+      },
     };
   }
 
