@@ -17,7 +17,6 @@ import {
   ENTITY_CARD_NAME_SCHEMA,
   LANG_SCHEMA,
   PanelImages,
-  SERVICE_SCHEMA,
   SHOW_CONFIG_SCHEMA,
   THEME_CONFIG_SCHEMA,
   VicPanelMapEditor,
@@ -25,7 +24,6 @@ import {
 import { BUTTON_GRID_SCHEMA } from './components/editor/forms/grid-button-schema';
 import { CARD_VERSION, PREVIEW_CONFIG_TYPES } from './const/const';
 import { cardTypes, editorShowOpts } from './const/data-keys';
-import { servicesCtrl } from './const/remote-control-keys';
 import editorcss from './css/editor.css';
 import { languageOptions, localize } from './localize/localize';
 import {
@@ -269,7 +267,6 @@ export class VehicleCardEditor extends LitElement implements LovelaceCardEditor 
       { titleKey: 'customButtonConfig', icon: 'mdi:view-dashboard', content: this._renderCustomButtonPanel() },
       { titleKey: 'mapConfig', icon: 'mdi:map-search', content: this._renderMapPopupConfig() },
       { titleKey: 'imagesConfig', icon: 'mdi:image', content: this._renderImageConfig() },
-      { titleKey: 'servicesConfig', icon: 'mdi:car-cog', content: this._renderServicesConfig() },
       { titleKey: 'themeLangConfig', icon: 'mdi:palette', content: this._renderThemesConfig() },
       { titleKey: 'showConfig', icon: 'mdi:toggle-switch', content: this._renderShowOptions() },
     ];
@@ -542,20 +539,6 @@ export class VehicleCardEditor extends LitElement implements LovelaceCardEditor 
       .editor=${this}
       ._config=${this._config}
     ></vic-panel-map-editor>`;
-  }
-
-  private _renderServicesConfig(): TemplateResult {
-    const infoAlert = this.localize('editor.common.infoServices');
-
-    const serviceOptions = Object.entries(servicesCtrl(this._selectedLanguage)).map(([key, { name }]) => ({
-      value: key,
-      label: name,
-    }));
-    const SERVICE_FORM_SCHEMA = SERVICE_SCHEMA(serviceOptions);
-    const DATA = { services: this._config?.services };
-    const servicesSelector = this._createHaForm(DATA, SERVICE_FORM_SCHEMA);
-
-    return html` <ha-alert alert-type="info">${infoAlert}</ha-alert>${servicesSelector}`;
   }
 
   private _renderVersionInfo(): TemplateResult {

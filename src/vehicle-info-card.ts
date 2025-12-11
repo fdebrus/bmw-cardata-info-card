@@ -8,10 +8,9 @@ import './components';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { EcoChart, RemoteControl, VehicleButtons, VehicleMap } from './components/';
+import { EcoChart, VehicleButtons, VehicleMap } from './components/';
 import { CardItem, cardTypes } from './const/data-keys';
 import { IMAGE } from './const/imgconst';
-import { servicesCtrl } from './const/remote-control-keys';
 import * as StateMapping from './const/state-mapping';
 import styles from './css/styles.css';
 import { localize } from './localize/localize';
@@ -113,7 +112,6 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   @query('vehicle-buttons') vehicleButtons!: VehicleButtons;
   @query('vehicle-map') vehicleMap!: VehicleMap;
   @query('eco-chart') ecoChart!: EcoChart;
-  @query('remote-control') remoteControl!: RemoteControl;
   @query('extra-map-card') _extraMapCard?: any;
 
   connectedCallback(): void {
@@ -441,8 +439,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
   private _renderInfoBox(): TemplateResult {
     const isCharging = this.isCharging;
-    const isServiceControl = this.config.enable_services_control !== false;
-    const justify = isCharging && isServiceControl ? 'space-evenly' : 'center';
+    const justify = isCharging ? 'space-evenly' : 'center';
 
     const defaultIndicData = this.createDataArray([{ key: 'lockSensor' }, { key: 'parkBrake' }]);
 
@@ -479,18 +476,10 @@ export class VehicleCard extends LitElement implements LovelaceCard {
         )
       : nothing;
 
-    // Render service control if enabled
-    const serviceControl =
-      this.config.enable_services_control !== false
-        ? renderItem('mdi:car-cog', this.localize('card.common.titleServices'), () =>
-            this.toggleCardFromButtons('servicesCard')
-          )
-        : nothing;
-
     // Combine all parts and render
     return html`
       <div class="info-box" style=${`justify-content: ${justify}`}>
-        ${defaultIndicators} ${serviceControl} ${addedChargingInfo}
+        ${defaultIndicators} ${addedChargingInfo}
       </div>
     `;
   }
@@ -657,24 +646,18 @@ export class VehicleCard extends LitElement implements LovelaceCard {
       vehicleCards: this._renderDefaultVehicleCard(),
       ecoCards: this._renderDefaultEcoCard(),
       tyreCards: this._renderDefaultTyreCard(),
-      servicesCard: this._renderServiceControl(),
       emptyCustom: this._showWarning('No custom card provided'),
     };
 
     const key = this._currentCardType;
     const defaultType = (key: string) => this.buttonCards[key]?.card_type ?? 'default';
-    let renderCard: TemplateResult | LovelaceCardConfig[] | void;
-    if (key === 'servicesCard') {
-      renderCard = cardConfigMap[key];
-    } else {
-      const selectedCard = this.buttonCards[key];
-      const cardType = selectedCard.card_type ?? 'default';
-      const customCard = !isEmpty(selectedCard.custom_card)
-        ? selectedCard.custom_card.map((card: LovelaceCardConfig) => card)
-        : cardConfigMap.emptyCustom;
+    const selectedCard = this.buttonCards[key];
+    const cardType = selectedCard.card_type ?? 'default';
+    const customCard = !isEmpty(selectedCard.custom_card)
+      ? selectedCard.custom_card.map((card: LovelaceCardConfig) => card)
+      : cardConfigMap.emptyCustom;
 
-      renderCard = cardType === 'custom' ? customCard : cardConfigMap[key];
-    }
+    const renderCard = cardType === 'custom' ? customCard : cardConfigMap[key];
 
     const lastCarUpdate = this.config.entity ? this._hass.states[this.config.entity].last_changed : '';
     const formattedDate = formatDateTime(new Date(lastCarUpdate), this._locale);
@@ -701,7 +684,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
     return html`
       <main id="cards-wrapper">
-        ${!['servicesCard'].includes(key) ? cardHeaderBox : nothing}
+        ${cardHeaderBox}
         <section class="card-element" type=${defaultType(key)}>${renderCard}</section>
         ${defaultType(key) === 'default'
           ? html`
@@ -858,27 +841,6 @@ export class VehicleCard extends LitElement implements LovelaceCard {
     tyreBoxex.forEach((el) => {
       el.toggleAttribute('rotated', !isHorizontal);
     });
-  }
-
-  private _renderServiceControl(): TemplateResult | void {
-    const hass = this._hass;
-    const serviceControl = this.config.services;
-
-    const activeServices = Object.entries(serviceControl).reduce((acc, [key, value]) => {
-      if (value) {
-        acc[key] = {
-          name: servicesCtrl(this.userLang)[key].name,
-          icon: servicesCtrl(this.userLang)[key].icon,
-        };
-      }
-      return acc;
-    }, {} as Record<string, { name: string; icon: string }>);
-
-    return html`
-      <div class="default-card remote-tab">
-        <remote-control .hass=${hass} .card=${this as any} .selectedServices=${activeServices}></remote-control>
-      </div>
-    `;
   }
 
   private _showWarning(warning: string): TemplateResult {

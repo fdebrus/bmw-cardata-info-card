@@ -7,7 +7,7 @@
 
 <br>
 
-<p style="text-align: justify;">This custom card displays essential information about your Mercedes vehicle. It retrieves data using the Custom Component for Mercedes cars by <a href="https://github.com/ReneNulschDE">ReneNulschDE</a> available at <a href="https://github.com/ReneNulschDE/mbapi2020">mbapi2020</a>. The card features four primary buttons: Trip Data, Vehicle Status, Eco Display, and Tire Pressure. These buttons can be easily replaced with any Lovelace card within Home Assistant, allowing for flexible and customizable vehicle data display.</p>
+<p style="text-align: justify;">This custom card displays essential information about your BMW using the <a href="https://github.com/bimmerconnected/bmw-cardata">BMW Cardata integration</a>. The integration is read-only, so the card focuses on presenting sensor data such as charge status, tyre pressures, preconditioning state, and driving range. The card features four primary buttons: Trip Data, Vehicle Status, Eco Display, and Tire Pressure. These buttons can be easily replaced with any Lovelace card within Home Assistant, allowing for flexible and customizable vehicle data display.</p>
 
 ## Features of the Card
 
@@ -15,7 +15,7 @@
 
 - **Vehicle Position Display**: Shows the current location of the vehicle on a map, with the option to track routes.
 - **Visual Slideshow**: Features a visual slideshow of the vehicle.
-- **Centralized Remote Control**: Offers available remote control functions and settings, all accessible from a single card.
+- **Sensor-Only Experience**: Focuses solely on read-only vehicle data from BMW Cardata—no remote commands are exposed.
 - **Individual Sub-Card Customization**: Allows customization for each individual sub-card to suit specific needs and preferences.
 - **Multilingual Support**: The card includes various translations, making it accessible in multiple languages.
 
@@ -98,7 +98,7 @@ or
 <p style="text-align: justify;">Basic options can be configured in the GUI editor. This card also offers optional advanced features for enhanced customization. You can enable a slideshow to display images of your car, with the ability to swipe sideways to navigate between images. The images can be uploaded directly to HA instance within editor. Additionally, you can display the car's position on a map along with the generated address.</p>
 
 > [!TIP]
-> For the best quality images of your vehicle, use the [Mercedes-Benz API service](https://developer.mercedes-benz.com/products/vehicle_images/docs#) to download them. You can find the Python script for downloading images [here](https://gist.github.com/ngocjohn/b1c1f3730cc6f7079ae0d2b3bddd57ad).
+> For the best quality images of your vehicle, use high-resolution BMW media shots or your own transparent-background photos sized around 500px wide for optimal rendering.
 
 <p align="center">
   <a href="./assets/card-ui-editor.gif">
@@ -124,54 +124,12 @@ or
 | `show_buttons`            | boolean     | Optional    | Set to `true` to show the buttons. Default is `true`.                                                                                                                                                                         |
 | `show_background`         | boolean     | Optional    | Set to `true` to show a background image. Default is `true`.                                                                                                                                                                  |
 | `enable_map_popup`        | boolean     | Optional    | Set to `true` to enable map popup function. Default is `false`.                                                                                                                                                               |
-| `enable_services_control` | boolean     | Optional    | Set to `true` to enable remote control tab. Default is `false`.                                                                                                                                                               |
 | `map_popup_config`        | object      | Optional    | Configuration including `theme_mode` to control the map’s appearance (`light` `dark` `auto`), `hours_to_show` to specify the number of hours of data to display, and `default_zoom` to set the initial zoom level of the map. |
 | `images`                  | object list        | Optional    | List of image URLs or Paths from config/www folder for the slideshow. Each image must contain a "url" property. Images render better with a transparent background and a maximum width of 500px to fit the card.                                                        |
 | `trip_card`               | object list | Optional    | Configuration objects for the trip card.                                                                                                                                                                                      |
 | `vehicle_card`            | object list | Optional    | Configuration objects for the vehicle card.                                                                                                                                                                                   |
 | `eco_card`                | object list | Optional    | Configuration objects for the eco display card.                                                                                                                                                                               |
 | `tyre_card`               | object list | Optional    | Configuration objects for the tire pressure card.                                                                                                                                                                             |
-| `services`                | object list | Optional    | Configure the available services for the integration. [Here](#services-configuration) are the available services that can be enabled or disabled.                                                                             |
-
-</details>
-
-### Services configuration
-
-> [!NOTE]
-> Some services require that the security PIN is created in your mobile Android/IOS app. Please store the pin in the options dialog of the integration. <a href="https://github.com/ReneNulschDE/mbapi2020?tab=readme-ov-file#services">More info</a>
-
-<details>
-  <summary>Services configuration</summary>
-
-| Service     | Description                                    |
-| ----------- | ---------------------------------------------- |
-| `charge`    | Manage the charging process.                   |
-| `auxheat`   | Control the auxiliary heating.                 |
-| `doorsLock` | Lock the car doors.                            |
-| `preheat`   | Control the preheating for zero emission cars. |
-| `sigPos`    | Start light signaling.                         |
-| `sunroof`   | Control the sunroof (open, tilt, close).       |
-| `sendRoute` | Send a route to the car.                       |
-| `engine`    | Control the engine (start, stop).              |
-| `windows`   | Control the windows (open, close, move).       |
-
-</details>
-
-<details>
-<summary> Yaml configuration </summary>
-
-```yaml
-services:
-  charge: true
-  auxheat: true
-  doorsLock: true
-  preheat: true
-  sigPos: true
-  sunroof: true
-  sendRoute: true
-  engine: true
-  windows: true
-```
 
 </details>
 
@@ -189,7 +147,7 @@ Below is the configuration replaced entities card for `Vehicle status` button.
 ```yaml
 - type: custom:vehicle-info-card
   entity: sensor.6z1_2359_car
-  name: Mercedes-AMG E 43 4MATIC
+  name: BMW X3 xDrive30e
   device_tracker: device_tracker.demo_paulus
   show_map: true
   show_slides: true

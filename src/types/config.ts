@@ -21,18 +21,6 @@ export enum SECTION {
 
 export const SECTION_DEFAULT_ORDER = [SECTION.HEADER_INFO, SECTION.IMAGES_SLIDER, SECTION.MINI_MAP, SECTION.BUTTONS];
 
-export type Services = {
-  auxheat: boolean;
-  charge: boolean;
-  doorsLock: boolean;
-  engine: boolean;
-  preheat: boolean;
-  sendRoute: boolean;
-  sigPos: boolean;
-  sunroof: boolean;
-  windows: boolean;
-};
-
 export type HISTORY_PERIOD = 'today' | 'yesterday' | undefined;
 export type LABEL_MODE = 'name' | 'state' | 'attribute' | 'icon';
 export type MAP_THEME_MODE = 'auto' | 'dark' | 'light';
@@ -198,7 +186,6 @@ export type SHOW_OPTIONS = {
   show_buttons: boolean;
   show_background: boolean;
   enable_map_popup: boolean;
-  enable_services_control: boolean;
   show_error_notify: boolean;
   show_header_info: boolean;
 };
@@ -211,7 +198,6 @@ export interface VehicleCardConfig extends LovelaceCardConfig, SHOW_OPTIONS {
   selected_language?: string;
   model_name?: string;
   images?: ImageConfig[];
-  services: Services;
   button_grid: ButtonGridConfig;
   map_popup_config: MapPopupConfig;
   selected_theme: ThemesConfig;
@@ -232,7 +218,7 @@ export interface VehicleCardConfig extends LovelaceCardConfig, SHOW_OPTIONS {
 
 export const defaultConfig = {
   type: 'custom:vehicle-info-card',
-  name: 'Mercedes Vehicle Card',
+  name: 'BMW Cardata Info Card',
   entity: '',
   model_name: '',
   selected_language: 'system',
@@ -242,7 +228,6 @@ export const defaultConfig = {
   show_header_info: true,
   show_background: true,
   enable_map_popup: false,
-  enable_services_control: false,
   show_error_notify: false,
   device_tracker: '',
   map_popup_config: {
@@ -278,17 +263,6 @@ export const defaultConfig = {
   button_grid: {
     use_swiper: false,
     rows_size: 2,
-  },
-  services: {
-    auxheat: false,
-    charge: false,
-    doorsLock: false,
-    engine: false,
-    preheat: false,
-    sendRoute: false,
-    sigPos: false,
-    sunroof: false,
-    windows: false,
   },
   use_custom_cards: {
     vehicle_card: false,
