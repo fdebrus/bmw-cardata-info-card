@@ -1,7 +1,24 @@
+<a id="v0.1.4"></a>
+# [bmw-cardata-info-card v0.1.4](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.4) - 2025-12-11
+
+test
+
+[Changes][v0.1.4]
+
+
 <a id="v0.1.3"></a>
 # [bmw-cardata-info-card v0.1.3](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.3) - 2025-12-11
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.3 -->
+
+## What's Changed
+### Other Changes
+* Improve BMW Cardata sensor matching by [@fdebrus](https://github.com/fdebrus) in [#5](https://github.com/fdebrus/bmw-cardata-info-card/pull/5)
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.1...v0.1.3
 
 [Changes][v0.1.3]
 
@@ -42,6 +59,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.4]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.3...v0.1.4
 [v0.1.3]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.1...v0.1.3
 [v0.1.1]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/fdebrus/bmw-cardata-info-card/tree/v0.1.0
