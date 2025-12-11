@@ -11,9 +11,13 @@ export const PREVIEW_CONFIG_TYPES = ['btn_preview', 'card_preview', 'tire_previe
 /**
  * Filters for binary sensors.
  */
-const binarySensorsFilters: {
-  [key: string]: { prefix?: string; suffix: string };
-} = {
+type EntityFilter = {
+  prefix?: string;
+  suffix: string;
+  aliases?: string[];
+};
+
+const binarySensorsFilters: Record<string, EntityFilter> = {
   lock: { prefix: 'lock', suffix: '_lock' },
   parkBrake: { suffix: '_parkbrakestatus' },
   liquidRangeCritical: { suffix: '_liquidrangecritical' },
@@ -30,9 +34,7 @@ const binarySensorsFilters: {
 /**
  * Filters for sensor devices.
  */
-const sensorDeviceFilters: {
-  [key: string]: { prefix?: string; suffix: string };
-} = {
+const sensorDeviceFilters: Record<string, EntityFilter> = {
   adBlueLevel: { suffix: '_tankleveladblue' },
   averageSpeedReset: { suffix: '_averagespeedreset' },
   averageSpeedStart: { suffix: '_averagespeedstart' },
@@ -55,11 +57,11 @@ const sensorDeviceFilters: {
   liquidConsumptionStart: { suffix: '_liquidconsumptionstart' },
   lockSensor: { prefix: 'sensor.', suffix: '_lock' },
   maxSoc: { prefix: 'sensor.', suffix: '_max_state_of_charge' },
-  odometer: { suffix: '_odometer' },
+  odometer: { suffix: '_odometer', aliases: ['_vehicle_mileage', '_mileage'] },
   precondStatus: { suffix: '_preclimatestatus' },
-  rangeElectric: { suffix: '_rangeelectrickm' },
-  rangeLiquid: { suffix: '_rangeliquid' },
-  soc: { prefix: 'sensor.', suffix: 'soc' },
+  rangeElectric: { suffix: '_rangeelectrickm', aliases: ['_remaining_range_electric', '_electric_range'] },
+  rangeLiquid: { suffix: '_rangeliquid', aliases: ['_remaining_range_fuel', '_remaining_range_total'] },
+  soc: { prefix: 'sensor.', suffix: 'soc', aliases: ['_charging_level_hv', '_battery_charge_level'] },
   starterBatteryState: { suffix: '_starterbatterystate' },
   sunroofStatus: { suffix: '_sunroofstatus' },
   tirePressureFrontLeft: { suffix: '_tirepressurefrontleft' },
