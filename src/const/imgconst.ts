@@ -1,3 +1,5 @@
+const toDataUri = (svg: string) => `data:image/svg+xml,${encodeURIComponent(svg)}`;
+
 const darkSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
   <defs>
     <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
@@ -59,10 +61,10 @@ const spinnerSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120
   <path d='M110 60a50 50 0 0 1-50 50' fill='none' stroke='#2a86ff' stroke-width='10' stroke-linecap='round'/>
 </svg>`;
 
-export const amgBlack = `data:image/svg+xml,${encodeURIComponent(darkSvg)}`;
-export const amgWhite = `data:image/svg+xml,${encodeURIComponent(lightSvg)}`;
-export const tyreBg = `data:image/svg+xml,${encodeURIComponent(tyreSvg)}`;
-export const logoLoading = `data:image/svg+xml,${encodeURIComponent(spinnerSvg)}`;
+export const amgBlack = toDataUri(darkSvg);
+export const amgWhite = toDataUri(lightSvg);
+export const tyreBg = toDataUri(tyreSvg);
+export const logoLoading = toDataUri(spinnerSvg);
 } as const;
 
 export type ImageKey = keyof typeof IMAGE;
