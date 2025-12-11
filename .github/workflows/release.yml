@@ -15,7 +15,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
       - name: Enable corepack
         run: corepack enable
@@ -25,6 +24,7 @@ jobs:
         with:
           version: 9
           run_install: false
+          cache: true
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
