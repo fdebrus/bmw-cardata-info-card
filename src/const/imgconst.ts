@@ -1,4 +1,4 @@
-const toDataUri = (svg: string) => `data:image/svg+xml,${encodeURIComponent(svg)}`;
+export const toDataUri = (svg: string) => `data:image/svg+xml,${encodeURIComponent(svg)}`;
 
 const darkSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
   <defs>
