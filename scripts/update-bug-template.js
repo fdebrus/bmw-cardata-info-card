@@ -7,7 +7,7 @@ const axios = require('axios');
 const bugTemplatePath = path.join(__dirname, '../.github/ISSUE_TEMPLATE/BUG_REPORT.yml');
 
 // GitHub API details
-const GITHUB_REPO = 'ngocjohn/vehicle-info-card'; // Replace with your GitHub repository in "owner/repo" format
+const GITHUB_REPO = 'fdebrus/bmw-cardata-info-card'; // Replace with your GitHub repository in "owner/repo" format
 
 // Fetch the list of release tags from GitHub
 const getReleasesTags = async () => {

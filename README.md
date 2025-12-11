@@ -30,11 +30,11 @@ BMW Cardata Info Card is a Home Assistant Lovelace card for presenting read-only
 3. Reload the browser cache (CTRL/⌘+SHIFT+R) after installation.
 
 ### Manual
-1. Download the latest `vehicle-info-card.js` from the [releases page](https://github.com/fdebrus/bmw-cardata-info-card/releases/latest).
+1. Download the latest `bmw-cardata-info-card.js` from the [releases page](https://github.com/fdebrus/bmw-cardata-info-card/releases/latest).
 2. Copy the file into your `/config/www/` directory.
 3. Reference the script from your Lovelace resources:
    ```yaml
-   url: /local/vehicle-info-card.js
+   url: /local/bmw-cardata-info-card.js
    type: module
    ```
 
@@ -65,7 +65,7 @@ Add the card to a dashboard using YAML mode or the card editor. The example belo
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `type` | string | Must be `custom:vehicle-info-card`. |
+| `type` | string | Must be `custom:bmw-cardata-info-card`. |
 | `entity` | string | Vehicle status entity from BMW Cardata. |
 | `name` | string | Optional override displayed in the header. |
 | `image_list` | list | Paths to images used in the slideshow. |

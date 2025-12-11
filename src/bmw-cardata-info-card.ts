@@ -48,11 +48,11 @@ import { getAddedButton, getDefaultButton, createCardElement, createCustomButton
 
 const ROWPX = 58;
 
-@customElement('vehicle-info-card')
+@customElement('bmw-cardata-info-card')
 export class VehicleCard extends LitElement implements LovelaceCard {
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
     await import('./editor');
-    return document.createElement('vehicle-info-card-editor');
+    return document.createElement('bmw-cardata-info-card-editor');
   }
   // Properties
   @property({ attribute: false })
@@ -1630,7 +1630,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vehicle-info-card': VehicleCard;
+    'bmw-cardata-info-card': VehicleCard;
   }
   interface Window {
     BenzCard: VehicleCard;

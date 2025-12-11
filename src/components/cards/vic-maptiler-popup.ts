@@ -6,6 +6,7 @@ import { LitElement, html, css, TemplateResult, unsafeCSS, CSSResultGroup, nothi
 import { customElement, property, state } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
+import { VehicleCard } from '../../bmw-cardata-info-card';
 import {
   DEFAULT_ZOOM,
   MAP_SOURCE,
@@ -17,7 +18,6 @@ import {
 } from '../../const/maptiler-const';
 import { MapData } from '../../types';
 import { getAddressFromMapTiler, getFormatedDateTime, getInitials } from '../../utils';
-import { VehicleCard } from '../../vehicle-info-card';
 import { MapConfig } from './vic-map-card';
 
 enum THEME_MODE {

@@ -23,7 +23,7 @@ Welcome to the translation contribution guide! This document will help you contr
    - Clone your fork to your local machine using the following command:
 
      ```sh
-     git clone https://github.com/your-username/vehicle-info-card.git
+     git clone https://github.com/your-username/bmw-cardata-info-card.git
      ```
 
 ## Generating a New Language File

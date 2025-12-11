@@ -54,7 +54,7 @@ const latestRelease: { version: string; hacs: boolean; updated: boolean } = {
   updated: false,
 };
 
-@customElement('vehicle-info-card-editor')
+@customElement('bmw-cardata-info-card-editor')
 export class VehicleCardEditor extends LitElement implements LovelaceCardEditor {
   @property({ attribute: false }) public hass!: HomeAssistant;
   @property({ attribute: false }) public lovelace?: LovelaceConfig;
@@ -1588,8 +1588,8 @@ export class VehicleCardEditor extends LitElement implements LovelaceCardEditor 
 
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
-  type: 'vehicle-info-card',
-  name: 'Vehicle Info Card',
+  type: 'bmw-cardata-info-card',
+  name: 'BMW Cardata Info Card',
   preview: true,
   description: 'A custom card to display vehicle data with a map and additional cards.',
   documentationURL: 'https://github.com/fdebrus/bmw-cardata-info-card?tab=readme-ov-file#basic-configuration',
@@ -1601,6 +1601,6 @@ declare global {
   }
 
   interface HTMLElementTagNameMap {
-    'vehicle-info-card-editor': LovelaceCardEditor;
+    'bmw-cardata-info-card-editor': LovelaceCardEditor;
   }
 }

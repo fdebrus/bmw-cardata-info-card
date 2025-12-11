@@ -4,6 +4,7 @@ import { hasAction } from 'custom-card-helpers';
 import { ExtraMapCardConfig, MapEntityConfig } from 'extra-map-card';
 import memoizeOne from 'memoize-one';
 
+import { VehicleCard } from '../bmw-cardata-info-card';
 import { combinedFilters, CARD_UPADE_SENSOR, CARD_VERSION, REPOSITORY } from '../const/const';
 import { baseDataKeys } from '../const/data-keys';
 import { VehicleCardEditor } from '../editor';
@@ -25,7 +26,6 @@ import {
   ButtonActionConfig,
 } from '../types';
 import { LovelaceCardConfig } from '../types/ha-frontend/lovelace/lovelace';
-import { VehicleCard } from '../vehicle-info-card';
 
 /**
  *
@@ -489,7 +489,7 @@ export const _getMapAddress = memoizeOne(
     address.streetName = formattedAddress;
     address.city = !address.sublocality ? address.city : address.sublocality;
 
-    // console.log('\x1B[93mvehicle-info-card\x1B[m\n', 'address:', address);
+    // console.log('\x1B[93mbmw-cardata-info-card\x1B[m\n', 'address:', address);
     return address;
   }
 );
