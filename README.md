@@ -4,8 +4,6 @@
 
 # 🚙 BMW Cardata Info Card
 
-![BMW Cardata Info Card preview](./assets/vehicle-header.gif)
-
 BMW Cardata Info Card is a Home Assistant Lovelace card for presenting read-only telemetry from the [BMW Cardata integration](https://github.com/bimmerconnected/bmw-cardata). The card focuses on surfacing battery status, tire pressures, range estimates, and other key sensors in an attractive dashboard without exposing remote control actions. Each area of the UI can be customized or swapped out for your own Lovelace cards.
 
 ## Features
@@ -43,7 +41,7 @@ BMW Cardata Info Card is a Home Assistant Lovelace card for presenting read-only
 Add the card to a dashboard using YAML mode or the card editor. The example below assumes your entities come from the BMW Cardata integration.
 
 ```yaml
-- type: custom:vehicle-info-card
+- type: custom:bmw-cardata-info-card
   entity: sensor.my_bmw_vehicle_status
   name: My BMW i4
   image_list:
