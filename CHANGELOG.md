@@ -1,7 +1,25 @@
+<a id="v0.1.7"></a>
+# [bmw-cardata-info-card v0.1.7](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.7) - 2025-12-11
+
+test
+
+[Changes][v0.1.7]
+
+
 <a id="v0.1.6"></a>
 # [bmw-cardata-info-card v0.1.6](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.6) - 2025-12-11
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.6 -->
+
+## What's Changed
+### Other Changes
+* Handle missing eco score entities in chart by [@fdebrus](https://github.com/fdebrus) in [#7](https://github.com/fdebrus/bmw-cardata-info-card/pull/7)
+* Ensure default config values merge in setConfig by [@fdebrus](https://github.com/fdebrus) in [#8](https://github.com/fdebrus/bmw-cardata-info-card/pull/8)
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.5...v0.1.6
 
 [Changes][v0.1.6]
 
@@ -90,6 +108,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.7]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.6...v0.1.7
 [v0.1.6]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.5...v0.1.6
 [v0.1.5]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.4...v0.1.5
 [v0.1.4]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.3...v0.1.4
