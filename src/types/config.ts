@@ -217,7 +217,7 @@ export interface VehicleCardConfig extends LovelaceCardConfig, SHOW_OPTIONS {
 // Default configuration for the Vehicle Card.
 
 export const defaultConfig = {
-  type: 'custom:vehicle-info-card',
+  type: 'custom:bmw-cardata-info-card',
   name: 'BMW Cardata Info Card',
   entity: '',
   model_name: '',

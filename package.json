@@ -16,7 +16,7 @@
     "url": "https://github.com/fdebrus/bmw-cardata-info-card",
     "repo": "fdebrus/bmw-cardata-info-card"
   },
-  "main": "vehicle-info-card.js",
+  "main": "bmw-cardata-info-card.js",
   "license": "MIT",
   "dependencies": {
     "@mdi/js": "^7.4.47",

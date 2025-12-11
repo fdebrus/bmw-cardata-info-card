@@ -7,6 +7,7 @@ import { LitElement, html, css, TemplateResult, PropertyValues, CSSResultGroup, 
 import { customElement, state, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
+import { VehicleCard } from '../../bmw-cardata-info-card';
 import { MAPTILER_DIALOG_STYLES, DEFAULT_DIALOG_STYLES, DEFAULT_HOURS_TO_SHOW } from '../../const/maptiler-const';
 import {
   HistoryStates,
@@ -20,9 +21,8 @@ import {
 } from '../../types';
 import { LovelaceCardConfig } from '../../types/ha-frontend/lovelace/lovelace';
 import { _getHistoryPoints, _getMapAddress, createMapPopup } from '../../utils';
-import { createCloseHeading } from '../../utils/create';
 import './vic-maptiler-popup';
-import { VehicleCard } from '../../vehicle-info-card';
+import { createCloseHeading } from '../../utils/create';
 
 export interface MapConfig extends MapPopupConfig {
   device_tracker: string;

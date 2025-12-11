@@ -30,10 +30,10 @@ const plugins = [dev && serve(serveopts), !dev && terser(terserOpt), !dev && fil
 
 export default [
   {
-    input: 'src/vehicle-info-card.ts',
+    input: 'src/bmw-cardata-info-card.ts',
     output: [
       {
-        file: dev ? 'dist/vehicle-info-card.js' : 'build/vehicle-info-card.js',
+        file: dev ? 'dist/bmw-cardata-info-card.js' : 'build/bmw-cardata-info-card.js',
         format: 'es',
         sourcemap: dev ? true : false,
         inlineDynamicImports: true,

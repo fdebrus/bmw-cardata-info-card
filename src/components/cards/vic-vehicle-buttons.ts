@@ -8,13 +8,13 @@ import Swiper from 'swiper';
 import { Pagination } from 'swiper/modules';
 import swipercss from 'swiper/swiper-bundle.css';
 
+import { VehicleCard } from '../../bmw-cardata-info-card';
 // Styles
 import mainstyle from '../../css/styles.css';
-// Local imports
-import { ButtonCardEntity, HomeAssistant, VehicleCardConfig } from '../../types';
 // Components
 import './vic-button-single';
-import { VehicleCard } from '../../vehicle-info-card';
+// Local imports
+import { ButtonCardEntity, HomeAssistant, VehicleCardConfig } from '../../types';
 
 @customElement('vehicle-buttons')
 export class VehicleButtons extends LitElement {

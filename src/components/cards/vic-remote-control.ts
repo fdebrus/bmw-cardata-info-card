@@ -4,12 +4,12 @@ import { fireEvent, forwardHaptic } from 'custom-card-helpers';
 import { LitElement, html, TemplateResult, CSSResultGroup, nothing } from 'lit';
 import { customElement, state, property } from 'lit/decorators.js';
 
+import { VehicleCard } from '../../bmw-cardata-info-card';
 import { ControlServiceData, tempSelectOptions } from '../../const/remote-control-keys';
 import styles from '../../css/remote-control.css';
 import mainstyle from '../../css/styles.css';
 import { HomeAssistant } from '../../types';
 import { convertToMinutes } from '../../utils';
-import { VehicleCard } from '../../vehicle-info-card';
 
 const enum PRECOND {
   TIME = 'time',
