@@ -57,7 +57,7 @@ const getVehicleEntities = memoizeOne(
     const entityIds: VehicleEntities = {};
 
     for (const entityName of Object.keys(combinedFilters)) {
-      const { prefix, suffix } = combinedFilters[entityName];
+      const { prefix, suffix, aliases } = combinedFilters[entityName];
 
       if (entityName === 'soc' || entityName === 'maxSoc') {
         const specialName = entityName === 'soc' ? 'State of Charge' : 'Max State of Charge';
@@ -72,10 +72,18 @@ const getVehicleEntities = memoizeOne(
       }
 
       const entity = deviceEntities.find((e) => {
-        if (prefix) {
-          return e.entity_id.startsWith(prefix) && e.entity_id.endsWith(suffix);
+        if (prefix && e.entity_id.startsWith(prefix) && e.entity_id.endsWith(suffix)) {
+          return true;
         }
-        return e.unique_id.endsWith(suffix) || e.entity_id.endsWith(suffix);
+
+        const defaultMatch = e.unique_id.endsWith(suffix) || e.entity_id.endsWith(suffix);
+        if (defaultMatch) return true;
+
+        if (aliases && aliases.some((alias) => e.entity_id.endsWith(alias) || e.unique_id.endsWith(alias))) {
+          return true;
+        }
+
+        return false;
       });
 
       if (entity) {
