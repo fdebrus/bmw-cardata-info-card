@@ -42,6 +42,7 @@ export class HeaderSlide extends LitElement {
     const paginationEl = swiperCon.querySelector('.swiper-pagination') as HTMLElement;
 
     const swiperConfig = () => {
+      const enableLoop = (config.loop ?? false) && this.images.length > 1;
       const defaultConfig: SwiperOptions = {
         modules: [Pagination, Autoplay, EffectFade, EffectCoverflow],
         centeredSlides: true,
@@ -50,7 +51,7 @@ export class HeaderSlide extends LitElement {
           enabled: true,
           onlyInViewport: true,
         },
-        loop: config.loop || true,
+        loop: enableLoop,
         speed: config.speed || 500,
         pagination: {
           clickable: true,
