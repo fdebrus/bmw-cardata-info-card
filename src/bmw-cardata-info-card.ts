@@ -1245,8 +1245,14 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   private getDoorStatusInfo = (): { state: string; active: boolean } => {
     let doorStatusOverall: string;
     const lang = this.userLang;
-    const doorState = this.getEntityAttribute(this.vehicleEntities.lockSensor?.entity_id, 'doorStatusOverall');
-    const chargeFlapDCStatus = this.getEntityState(this.vehicleEntities.chargeFlapDCStatus?.entity_id);
+    const lockSensorEntityId = this.vehicleEntities.lockSensor?.entity_id;
+    const chargeFlapDCStatusEntityId = this.vehicleEntities.chargeFlapDCStatus?.entity_id;
+    const doorState = this.getEntityAttribute(lockSensorEntityId, 'doorStatusOverall');
+    const chargeFlapDCStatus = this.getEntityState(chargeFlapDCStatusEntityId);
+
+    if (!lockSensorEntityId && !chargeFlapDCStatusEntityId) {
+      return { state: '', active: false };
+    }
 
     let closed = chargeFlapDCStatus === '1' && doorState === '1';
 
@@ -1255,13 +1261,10 @@ export class VehicleCard extends LitElement implements LovelaceCard {
     } else {
       const doorAttributeStates: Record<string, any> = {};
       Object.keys(StateMapping.doorAttributes(lang)).forEach((attribute) => {
-        if (attribute === 'chargeflapdcstatus' && this.vehicleEntities.chargeFlapDCStatus?.entity_id !== undefined) {
-          doorAttributeStates[attribute] = this.getEntityState(this.vehicleEntities.chargeFlapDCStatus.entity_id);
-        } else {
-          doorAttributeStates[attribute] = this.getEntityAttribute(
-            this.vehicleEntities.lockSensor.entity_id,
-            attribute
-          );
+        if (attribute === 'chargeflapdcstatus' && chargeFlapDCStatusEntityId !== undefined) {
+          doorAttributeStates[attribute] = this.getEntityState(chargeFlapDCStatusEntityId);
+        } else if (lockSensorEntityId !== undefined) {
+          doorAttributeStates[attribute] = this.getEntityAttribute(lockSensorEntityId, attribute);
         }
       });
       const openDoors = Object.keys(doorAttributeStates).filter(
