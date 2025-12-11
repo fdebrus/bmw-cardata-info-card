@@ -678,19 +678,6 @@ export class VehicleCard extends LitElement implements LovelaceCard {
       emptyCustom: this._showWarning('No custom card provided'),
     };
 
-    const key = this._currentCardType;
-    const defaultType = (key: string) => this.buttonCards[key]?.card_type ?? 'default';
-    const selectedCard = this.buttonCards[key];
-    const cardType = selectedCard.card_type ?? 'default';
-    const customCard = !isEmpty(selectedCard.custom_card)
-      ? selectedCard.custom_card.map((card: LovelaceCardConfig) => card)
-      : cardConfigMap.emptyCustom;
-
-    const renderCard = cardType === 'custom' ? customCard : cardConfigMap[key];
-
-    const lastCarUpdate = this.config.entity ? this._hass.states[this.config.entity].last_changed : '';
-    const formattedDate = formatDateTime(new Date(lastCarUpdate), this._locale);
-
     const cardHeaderBox = html`<div class="added-card-header">
       <ha-icon-button .label=${'Close'} .path=${mdiClose} class="click-shrink" @click=${() => this.toggleCard('close')}>
       </ha-icon-button>
@@ -710,6 +697,23 @@ export class VehicleCard extends LitElement implements LovelaceCard {
         ></ha-icon-button>
       </div>
     </div>`;
+
+    const key = this._currentCardType;
+    const defaultType = (key: string) => this.buttonCards[key]?.card_type ?? 'default';
+    const selectedCard = this.buttonCards[key];
+
+    if (!selectedCard) {
+      return html`<main id="cards-wrapper">${cardHeaderBox}${this._showWarning('No custom card provided')}</main>`;
+    }
+    const cardType = selectedCard.card_type ?? 'default';
+    const customCard = !isEmpty(selectedCard.custom_card)
+      ? selectedCard.custom_card.map((card: LovelaceCardConfig) => card)
+      : cardConfigMap.emptyCustom;
+
+    const renderCard = cardType === 'custom' ? customCard : cardConfigMap[key] ?? cardConfigMap.emptyCustom;
+
+    const lastCarUpdate = this.config.entity ? this._hass.states[this.config.entity].last_changed : '';
+    const formattedDate = formatDateTime(new Date(lastCarUpdate), this._locale);
 
     return html`
       <main id="cards-wrapper">
