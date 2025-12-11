@@ -1592,7 +1592,7 @@ export class VehicleCardEditor extends LitElement implements LovelaceCardEditor 
   name: 'Vehicle Info Card',
   preview: true,
   description: 'A custom card to display vehicle data with a map and additional cards.',
-  documentationURL: 'https://github.com/ngocjohn/vehicle-info-card?tab=readme-ov-file#configuration',
+  documentationURL: 'https://github.com/fdebrus/bmw-cardata-info-card?tab=readme-ov-file#basic-configuration',
 });
 
 declare global {

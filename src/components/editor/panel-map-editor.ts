@@ -162,7 +162,7 @@ export class VicPanelMapEditor extends LitElement {
 
   private _renderBaseMapConfig(): TemplateResult {
     const maptilerInfo = `How to get Maptiler API Key?`;
-    const docLink = 'https://github.com/ngocjohn/vehicle-info-card/blob/main/docs/Maptiler.md';
+    const docLink = 'https://github.com/fdebrus/bmw-cardata-info-card/blob/main/docs/Maptiler.md';
 
     const deviceTracker = this._config.device_tracker || '';
     const maptilerApiKey = this._config?.extra_configs?.maptiler_api_key || '';

@@ -1,221 +1,123 @@
 <a name="readme-top"></a>
 
-[![hacs][hacs-default]][hacs-default-link] [![hacs][hacs-validate]][hacs-validate-link] ![last-commit] ![total-downloads] ![latest-downloads] [![buy_me_a_coffee][bmac-badge]][bmac-link]
-# 🚙 Vehicle info card
+[![hacs][hacs-default]][hacs-default-link] [![hacs][hacs-validate]][hacs-validate-link] ![last-commit] ![total-downloads] ![latest-downloads]
 
-<a href="#"><img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/vehicle-header.gif" style="border-radius: 8px"></a>
+# 🚙 BMW Cardata Info Card
 
-<br>
+![BMW Cardata Info Card preview](./assets/vehicle-header.gif)
 
-<p style="text-align: justify;">This custom card displays essential information about your BMW using the <a href="https://github.com/bimmerconnected/bmw-cardata">BMW Cardata integration</a>. The integration is read-only, so the card focuses on presenting sensor data such as charge status, tyre pressures, preconditioning state, and driving range. The card features four primary buttons: Trip Data, Vehicle Status, Eco Display, and Tire Pressure. These buttons can be easily replaced with any Lovelace card within Home Assistant, allowing for flexible and customizable vehicle data display.</p>
+BMW Cardata Info Card is a Home Assistant Lovelace card for presenting read-only telemetry from the [BMW Cardata integration](https://github.com/bimmerconnected/bmw-cardata). The card focuses on surfacing battery status, tire pressures, range estimates, and other key sensors in an attractive dashboard without exposing remote control actions. Each area of the UI can be customized or swapped out for your own Lovelace cards.
 
-## Features of the Card
+## Features
 
-- **Comprehensive Vehicle Information**: Provides essential information about the car all in one place.
+- **Complete vehicle snapshot** with battery/charging, range, climate, security, and tire information in a single view.
+- **Vehicle position map** with optional history traces and configurable providers.
+- **Image slideshow** that cycles through your own vehicle photos.
+- **Sensor-only focus** that keeps the integration read-only for peace of mind.
+- **Highly configurable layout** where individual buttons and sub-cards can be replaced or reordered.
+- **Localization** with translations for many languages.
 
-- **Vehicle Position Display**: Shows the current location of the vehicle on a map, with the option to track routes.
-- **Visual Slideshow**: Features a visual slideshow of the vehicle.
-- **Sensor-Only Experience**: Focuses solely on read-only vehicle data from BMW Cardata—no remote commands are exposed.
-- **Individual Sub-Card Customization**: Allows customization for each individual sub-card to suit specific needs and preferences.
-- **Multilingual Support**: The card includes various translations, making it accessible in multiple languages.
+## Prerequisites
 
-<!--LOCALIZATION-CONTENT-START-->
-
-
-### Supported Localization
-
-<details>
-  <summary>The following languages are supported in this project</summary>
-
-| Language Code | Name                   | Native Name            |
-| ------------- | ---------------------- | ---------------------- |
-| `cs`     | Czech          | Čeština          |
-| `de`     | German          | Deutsch          |
-| `en`     | English          | English          |
-| `en_GB`     | English          | English (GB)          |
-| `es`     | Spanish          | Español          |
-| `fr`     | French          | Français          |
-| `it`     | Italiano          | Italian          |
-| `lt`     | Lithuanian          | Lietuvių          |
-| `nl`     | Dutch          | Nederlands          |
-| `pl`     | Polish          | Polski          |
-| `sk`     | Slovak          | Slovenčina          |
-| `vi`     | Vietnamese          | Tiếng Việt          |
-| `zh_Hans`     | zh-hans          | 简体中文          |
-| `zh_Hant`     | zh-hant          | 繁體中文          |
-
-</details>
-
-<!--LOCALIZATION-CONTENT-END-->
-
-### View options
-
-<img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-views.png">
-
-### Sub cards
-
-<img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-summary.png">
+- Home Assistant 2024.8 or newer.
+- The [BMW Cardata integration](https://github.com/bimmerconnected/bmw-cardata) installed and providing the vehicle entities referenced below.
 
 ## Installation
 
-### [HACS](https://hacs.xyz) (Home Assistant Community Store)
-
-Use this link to directly go to the repository in HACS
-
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=ngocjohn&repository=vehicle-info-card&category=plugin)
-
-or
-
-1. If HACS is not installed yet, download it following the instructions on [https://hacs.xyz/docs/use/#getting-started-with-hacs](https://hacs.xyz/docs/use/#getting-started-with-hacs)
-2. Open HACS in Home Assistant
-3. Search for `Vehicle info card`
-4. Click the download button. ⬇️
-1. Force refresh the Home Assistant page `Ctrl` + `F5` / `Shift` + `⌘` + `R`
-1. Add vehicle-status-card to your dashboard
-
+### HACS (recommended)
+1. In Home Assistant, add a custom repository pointing to `fdebrus/bmw-cardata-info-card` and select the **Plugin** category.
+2. Install **BMW Cardata Info Card** from HACS.
+3. Reload the browser cache (CTRL/⌘+SHIFT+R) after installation.
 
 ### Manual
+1. Download the latest `vehicle-info-card.js` from the [releases page](https://github.com/fdebrus/bmw-cardata-info-card/releases/latest).
+2. Copy the file into your `/config/www/` directory.
+3. Reference the script from your Lovelace resources:
+   ```yaml
+   url: /local/vehicle-info-card.js
+   type: module
+   ```
 
-<details>
-  <summary>Click to expand installation instructions</summary>
+## Basic configuration
 
-1. Download the [vehicle-info-card.js](https://github.com/ngocjohn/vehicle-info-card/releases/latest).
-
-2. Place the downloaded file on your Home Assistant machine in the `config/www` folder (when there is no `www` folder in the folder where your `configuration.yaml` file is, create it and place the file there).
-3. In Home Assistant go to `Configuration->Lovelace Dashboards->Resources` (When there is no `resources` tag on the `Lovelace Dashboard` page, enable advanced mode in your account settings, and retry this step).
-4. Add a new resource:
-
-   - Url = `/local/vehicle-info-card.js`
-   - Resource type = `module`
-
-5. Force refresh the Home Assistant page `Ctrl` + `F5` / `Shift` + `⌘` + `R`.
-6. Add vehicle-info-card to your page.
-
-</details>
-
-## Configuration
-
-<p style="text-align: justify;">Basic options can be configured in the GUI editor. This card also offers optional advanced features for enhanced customization. You can enable a slideshow to display images of your car, with the ability to swipe sideways to navigate between images. The images can be uploaded directly to HA instance within editor. Additionally, you can display the car's position on a map along with the generated address.</p>
-
-> [!TIP]
-> For the best quality images of your vehicle, use high-resolution BMW media shots or your own transparent-background photos sized around 500px wide for optimal rendering.
-
-<p align="center">
-  <a href="./assets/card-ui-editor.gif">
-    <img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-ui-editor.gif" alt="Card UI Editor">
-  </a>
-</p>
-
-### Options
-
-<details>
-  <summary>Below is the basic configuration for the custom card </summary>
-
-| Name                      | Type        | Requirement | Description                                                                                                                                                                                                                   |
-| ------------------------- | ----------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type`                    | string      | Required    | `custom:vehicle-info-card`.                                                                                                                                                                                                   |
-| `entity`                  | string      | Required    | The entity ID of the car sensor, e.g., `sensor.license_plate_car`.                                                                                                                                                            |
-| `name`                    | string      | Optional    | The name to be displayed on the card. Default is vehicle model name.                                                                                                                                                          |
-| `device_tracker`          | string      | Optional    | The entity ID of the device tracker for map display.                                                                                                                                                                          |
-| `google_api_key`          | string      | Optional    | Google Maps API key for generating address from coordinates. Default is using OpenStreetMap service.                                                                                                                          |
-| `selected_language`       | string      | Optional    | Language options. Default `en`                                                                                                                                                                                                |
-| `show_slides`             | boolean     | Optional    | Set to `true` to enable slideshow of car images. Default is `false`.                                                                                                                                                          |
-| `show_map`                | boolean     | Optional    | Set to `true` to display the car's position on a map. Default is `false`.                                                                                                                                                     |
-| `show_buttons`            | boolean     | Optional    | Set to `true` to show the buttons. Default is `true`.                                                                                                                                                                         |
-| `show_background`         | boolean     | Optional    | Set to `true` to show a background image. Default is `true`.                                                                                                                                                                  |
-| `enable_map_popup`        | boolean     | Optional    | Set to `true` to enable map popup function. Default is `false`.                                                                                                                                                               |
-| `map_popup_config`        | object      | Optional    | Configuration including `theme_mode` to control the map’s appearance (`light` `dark` `auto`), `hours_to_show` to specify the number of hours of data to display, and `default_zoom` to set the initial zoom level of the map. |
-| `images`                  | object list        | Optional    | List of image URLs or Paths from config/www folder for the slideshow. Each image must contain a "url" property. Images render better with a transparent background and a maximum width of 500px to fit the card.                                                        |
-| `trip_card`               | object list | Optional    | Configuration objects for the trip card.                                                                                                                                                                                      |
-| `vehicle_card`            | object list | Optional    | Configuration objects for the vehicle card.                                                                                                                                                                                   |
-| `eco_card`                | object list | Optional    | Configuration objects for the eco display card.                                                                                                                                                                               |
-| `tyre_card`               | object list | Optional    | Configuration objects for the tire pressure card.                                                                                                                                                                             |
-
-</details>
-
-### Examples
-
-Below is the configuration replaced entities card for `Vehicle status` button.
-
-> [!TIP]
-> For an enhanced picture elements card, refer to [this tutorial](https://community.home-assistant.io/t/mercedes-me-component/41911/1809) on the Home Assistant forum. Use downloaded images with the new version of the component for the best results.
-
-<details>
-
-<summary>Yaml configuration</summary>
+Add the card to a dashboard using YAML mode or the card editor. The example below assumes your entities come from the BMW Cardata integration.
 
 ```yaml
 - type: custom:vehicle-info-card
-  entity: sensor.6z1_2359_car
-  name: BMW X3 xDrive30e
-  device_tracker: device_tracker.demo_paulus
-  show_map: true
-  show_slides: true
-  show_buttons: true
-  show_background: true
-  enable_map_popup: false
-  images:
-    - url: /local/benz/benz-1.png
-    - url: /local/benz/benz-2.png
-    - url: /local/benz/benz-3.png
-    - url: /local/benz/benz-4.png
-    - url: /local/benz/benz-5.png
-  vehicle_card:
-    - type: entities
-      show_header_toggle: false
-      state_color: true
-      title: Vehicle status
-      entities:
-        - entity: lock.6z1_2359_lock
-        - entity: binary_sensor.6z1_2359_park_brake_status
-        - entity: binary_sensor.6z1_2359_tire_warning
-        - entity: binary_sensor.6z1_2359_low_brake_fluid_warning
-        - entity: binary_sensor.6z1_2359_low_coolant_level_warning
-        - entity: binary_sensor.6z1_2359_engine_light_warning
-        - entity: binary_sensor.6z1_2359_low_wash_water_warning
+  entity: sensor.my_bmw_vehicle_status
+  name: My BMW i4
+  image_list:
+    - url: /local/bmw/front.png
+    - url: /local/bmw/interior.png
+  map:
+    enabled: true
+    provider: maptiler
+  eco:
+    enabled: true
+  buttons:
+    - type: custom:tile
+      entity: lock.my_bmw
+    - type: custom:tile
+      entity: binary_sensor.my_bmw_windows
 ```
 
-<img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-example-editor.png">
+### Key options
 
-</details>
+| Field | Type | Description |
+| --- | --- | --- |
+| `type` | string | Must be `custom:vehicle-info-card`. |
+| `entity` | string | Vehicle status entity from BMW Cardata. |
+| `name` | string | Optional override displayed in the header. |
+| `image_list` | list | Paths to images used in the slideshow. |
+| `map.enabled` | boolean | Show or hide the vehicle position map. |
+| `buttons` | list | Custom buttons or Lovelace cards rendered in the action strip. |
 
-## Screenshots
-
-<img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-dark.png" />
-<img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-light.png" />
-<img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/sub-cards.png" />
+## Localization support
 
 <details>
-  <summary> More screenshots </summary>
-    <img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/card-toggled.png" />
-    <img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/car-custom-card-warning.png">
-    <img src="https://raw.githubusercontent.com/ngocjohn/vehicle-info-card/main/assets/car-custom-card.png">
+  <summary>Supported languages</summary>
+
+| Language Code | Name | Native Name |
+| ------------- | ---------------------- | ---------------------- |
+| `cs` | Czech | Čeština |
+| `de` | German | Deutsch |
+| `en` | English | English |
+| `en_GB` | English | English (GB) |
+| `es` | Spanish | Español |
+| `fr` | French | Français |
+| `it` | Italiano | Italian |
+| `lt` | Lithuanian | Lietuvių |
+| `nl` | Dutch | Nederlands |
+| `pl` | Polish | Polski |
+| `pt` | Portuguese | Português |
+| `ru` | Russian | Русский |
+| `sv` | Swedish | Svenska |
+| `tr` | Turkish | Türkçe |
+| `vi` | Vietnamese | Tiếng Việt |
+| `zh_Hans` | Chinese | 简体中文 |
+| `zh_Hant` | Chinese | 繁體中文 |
+
 </details>
 
-## Contribution Guidelines
+## Development
 
-We welcome contributions and are grateful for your support in improving this project. If you'd like to contribute, please follow our [Contribution Guidelines](docs/CONTRIBUTING.md) to get started.
+1. Install dependencies with `pnpm install`.
+2. Run `pnpm start` for a development build with live reload, or `pnpm build` for a production bundle.
+3. Localization helpers are available via `pnpm run import-lang` and `pnpm run update-lang`.
 
-## Support
-If you like the card, consider supporting the developer
+## Contributing
 
-<a href="https://www.buymeacoffee.com/ngocjohn" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 150px !important;" ></a>
+Issues and pull requests are welcome. Please keep changes focused on enhancing the BMW Cardata experience and note that the project surfaces sensor data only.
 
----
+## License
 
-2024 Viet Ngoc
+MIT © 2024 Frederic Debrus.
 
-[https://github.com/ngocjohn/](https://github.com/ngocjohn/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!--BADGES-->
-[hacs-default]: https://img.shields.io/badge/HACS-Default-blue?style=flat&logo=homeassistantcommunitystore&logoSize=auto
-[hacs-default-link]: https://my.home-assistant.io/redirect/hacs_repository/?owner=ngocjohn&repository=vehicle-info-card&category=plugin
-[hacs-validate]: https://github.com/ngocjohn/vehicle-info-card/actions/workflows/validate.yaml/badge.svg
-[hacs-validate-link]: https://github.com/ngocjohn/vehicle-info-card/actions/workflows/validate.yaml
-[last-commit]: https://img.shields.io/github/last-commit/ngocjohn/vehicle-info-card
-[total-downloads]: https://img.shields.io/github/downloads/ngocjohn/vehicle-info-card/total?style=flat&logo=homeassistantcommunitystore&logoSize=auto&label=Downloads&color=%2318BCF2
-[latest-downloads]: https://img.shields.io/github/downloads/ngocjohn/vehicle-info-card/latest/total?style=flat&logo=homeassistantcommunitystore&logoSize=auto
-[bmac-link]: https://www.buymeacoffee.com/ngocjohn
-[bmac-badge]: https://img.shields.io/badge/_-buy_me_a_coffee-F28834?style=flat&logo=buymeacoffee&labelColor=grey&color=%23F28834
+[project-repo]: https://github.com/fdebrus/bmw-cardata-info-card
+[hacs-default]: https://img.shields.io/badge/HACS-Default-41BDF5.svg
+[hacs-default-link]: https://my.home-assistant.io/redirect/hacs_repository/?owner=fdebrus&repository=bmw-cardata-info-card&category=plugin
+[hacs-validate]: https://github.com/fdebrus/bmw-cardata-info-card/actions/workflows/validate.yaml/badge.svg
+[hacs-validate-link]: https://github.com/fdebrus/bmw-cardata-info-card/actions/workflows/validate.yaml
+[last-commit]: https://img.shields.io/github/last-commit/fdebrus/bmw-cardata-info-card
+[total-downloads]: https://img.shields.io/github/downloads/fdebrus/bmw-cardata-info-card/total?style=flat&logo=homeassistantcommunitystore&logoSize=auto&label=Downloads&color=%2318BCF2
+[latest-downloads]: https://img.shields.io/github/downloads/fdebrus/bmw-cardata-info-card/latest/total?style=flat&logo=homeassistantcommunitystore&logoSize=auto

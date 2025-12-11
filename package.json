@@ -1,7 +1,7 @@
 {
-  "name": "vehicle-info-card",
-  "version": "1.11.3-0",
-  "description": "Lovelace custom card for displaying vehicle information from Mercedes Component integration",
+  "name": "bmw-cardata-info-card",
+  "version": "0.1.0",
+  "description": "Lovelace custom card for displaying BMW vehicle information provided by the BMW Cardata integration",
   "keywords": [
     "home-assistant",
     "homeassistant",
@@ -10,11 +10,11 @@
     "lovelace",
     "custom-cards"
   ],
-  "author": "Viet Ngoc",
+  "author": "Frederic Debrus",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ngocjohn/vehicle-info-card",
-    "repo": "ngocjohn/vehicle-info-card"
+    "url": "https://github.com/fdebrus/bmw-cardata-info-card",
+    "repo": "fdebrus/bmw-cardata-info-card"
   },
   "main": "vehicle-info-card.js",
   "license": "MIT",
