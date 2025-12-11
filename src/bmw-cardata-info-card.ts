@@ -607,7 +607,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
     const chartData = filteredData.map((item) => {
       const label = this.localize(`card.ecoCard.${item.key}`);
-      const score = getEcoScore(this.vehicleEntities[item.key].entity_id);
+      const score = getEcoScore(this.vehicleEntities[item.key]?.entity_id);
       return { series: score, labels: label };
     });
 
