@@ -38,7 +38,9 @@ import { LovelaceCardConfig } from '../types/ha-frontend/lovelace/lovelace';
  * @returns
  */
 
-let cachedVehiclePrefix: string | null = null;
+// Cache prefixes per anchor entity to avoid leaking one vehicle's prefix into another card
+// when multiple vehicles are displayed simultaneously.
+const vehiclePrefixCache = new Map<string, string>();
 
 const CARDATA_SUFFIXES = Array.from(new Set([...Object.values(CARDATA_ENTITY_MAP), ...CARDATA_WINDOW_SUFFIXES]));
 
@@ -62,13 +64,17 @@ const derivePrefixFromEntity = (entityId: string | undefined): string | null => 
 };
 
 export function detectVehiclePrefix(hass: HomeAssistant, preferredEntity?: string): string | null {
-  const preferredPrefix = derivePrefixFromEntity(preferredEntity);
-  if (preferredPrefix) {
-    cachedVehiclePrefix = preferredPrefix;
-    return preferredPrefix;
+  if (preferredEntity && vehiclePrefixCache.has(preferredEntity)) {
+    return vehiclePrefixCache.get(preferredEntity) ?? null;
   }
 
-  if (cachedVehiclePrefix) return cachedVehiclePrefix;
+  const preferredPrefix = derivePrefixFromEntity(preferredEntity);
+  if (preferredPrefix) {
+    if (preferredEntity) {
+      vehiclePrefixCache.set(preferredEntity, preferredPrefix);
+    }
+    return preferredPrefix;
+  }
 
   const sensorEntities = Object.keys(hass.states)
     .filter((entityId) => entityId.startsWith('sensor.'))
@@ -78,8 +84,11 @@ export function detectVehiclePrefix(hass: HomeAssistant, preferredEntity?: strin
     const withoutDomain = entityId.replace('sensor.', '');
     for (const suffix of DISCOVERY_SUFFIXES) {
       if (withoutDomain.endsWith(`_${suffix}`)) {
-        cachedVehiclePrefix = withoutDomain.slice(0, withoutDomain.length - suffix.length - 1);
-        return cachedVehiclePrefix;
+        const detectedPrefix = withoutDomain.slice(0, withoutDomain.length - suffix.length - 1);
+        if (preferredEntity) {
+          vehiclePrefixCache.set(preferredEntity, detectedPrefix);
+        }
+        return detectedPrefix;
       }
     }
   }
@@ -183,9 +192,16 @@ export function getCarEntity(hass: HomeAssistant): string {
     '_vehicle_metadata',
   ];
 
-  const entity = Object.keys(hass.states).find(
+  const candidates = Object.keys(hass.states).filter(
     (candidate) => candidate.startsWith('sensor.') && suffixes.some((suffix) => candidate.endsWith(suffix))
   );
+
+  const metadataCandidates = candidates.filter((candidate) => candidate.endsWith('_vehicle_metadata')).sort();
+  const otherCandidates = candidates
+    .filter((candidate) => !candidate.endsWith('_vehicle_metadata'))
+    .sort();
+
+  const [entity] = metadataCandidates.length ? metadataCandidates : otherCandidates;
 
   return entity || '';
 }
