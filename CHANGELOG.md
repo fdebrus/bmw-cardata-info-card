@@ -1,7 +1,25 @@
+<a id="v0.1.11"></a>
+# [bmw-cardata-info-card v0.1.11](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.11) - 2025-12-12
+
+test
+
+[Changes][v0.1.11]
+
+
 <a id="v0.1.10"></a>
 # [bmw-cardata-info-card v0.1.10](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.10) - 2025-12-12
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.10 -->
+
+## What's Changed
+### Other Changes
+* Revert Mercedes-style overlay changes by [@fdebrus](https://github.com/fdebrus) in [#13](https://github.com/fdebrus/bmw-cardata-info-card/pull/13)
+* Add read-only services strip to header by [@fdebrus](https://github.com/fdebrus) in [#14](https://github.com/fdebrus/bmw-cardata-info-card/pull/14)
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.9...v0.1.10
 
 [Changes][v0.1.10]
 
@@ -160,6 +178,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.11]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.10...v0.1.11
 [v0.1.10]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.9...v0.1.10
 [v0.1.9]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.8...v0.1.9
 [v0.1.8]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.7...v0.1.8
