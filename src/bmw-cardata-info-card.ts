@@ -1491,8 +1491,17 @@ export class VehicleCard extends LitElement implements LovelaceCard {
     // if (!this._resizeInitiated) return;
     const isDarkMode = this._hass?.themes?.darkMode ?? this.isDark;
     const backgroundUrl = isDarkMode ? IMAGE.bmwDark : IMAGE.bmwLight;
+    const bgOpacity = isDarkMode ? '0.26' : '0.22';
+    const glassBg = isDarkMode ? 'rgba(10, 14, 22, 0.65)' : 'rgba(255, 255, 255, 0.7)';
+    const glassBorder = isDarkMode
+      ? '1px solid rgba(255, 255, 255, 0.14)'
+      : '1px solid rgba(0, 0, 0, 0.08)';
     return styleMap({
       '--vehicle-card-bg': this.config.show_background ? `url("${backgroundUrl}")` : 'none',
+      '--vic-background-image': this.config.show_background ? `url("${backgroundUrl}")` : 'none',
+      '--vic-bg-opacity': bgOpacity,
+      '--vic-glass-bg': glassBg,
+      '--vic-glass-border': glassBorder,
     });
   }
 
