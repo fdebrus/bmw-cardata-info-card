@@ -44,8 +44,8 @@ Add the card to a dashboard using YAML mode or the card editor. The example belo
 
 ```yaml
 - type: custom:bmw-cardata-info-card
-  entity: sensor.my_bmw_vehicle_status
-  name: My BMW i4
+  entity: sensor.x3_xdrive30e_vehicle_metadata
+  name: My X3 xDrive30e
   image_list:
     - url: /local/bmw/front.png
     - url: /local/bmw/interior.png
@@ -66,7 +66,7 @@ Add the card to a dashboard using YAML mode or the card editor. The example belo
 | Field | Type | Description |
 | --- | --- | --- |
 | `type` | string | Must be `custom:bmw-cardata-info-card`. |
-| `entity` | string | Vehicle status entity from BMW Cardata. |
+| `entity` | string | Any BMW Cardata sensor entity (e.g., `sensor.<prefix>_vehicle_metadata`). |
 | `name` | string | Optional override displayed in the header. |
 | `image_list` | list | Paths to images used in the slideshow. |
 | `map.enabled` | boolean | Show or hide the vehicle position map. |
@@ -75,7 +75,8 @@ Add the card to a dashboard using YAML mode or the card editor. The example belo
 ## Entity discovery
 
 The card auto-detects your vehicle prefix by scanning for BMW Cardata sensors in the format `sensor.<vehicle>_<suffix>`.
-For an X3 xDrive30e the prefix would be `x3_xdrive30e`, so the card expects entities such as `sensor.x3_xdrive30e_range_ev_remaining_range`.
+Point the `entity` field in your card YAML to any BMW Cardata sensor, such as the metadata entity (`sensor.x3_xdrive30e_vehicle_metadata`).
+For an X3 xDrive30e the prefix would be `x3_xdrive30e`, so the card expects entities such as `sensor.x3_xdrive30e_vehicle_mileage` and `sensor.x3_xdrive30e_range_ev_remaining_range`.
 The following suffixes are used to populate the built-in UI sections:
 
 | Card field | Required suffix |
