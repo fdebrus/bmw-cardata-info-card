@@ -72,6 +72,32 @@ Add the card to a dashboard using YAML mode or the card editor. The example belo
 | `map.enabled` | boolean | Show or hide the vehicle position map. |
 | `buttons` | list | Custom buttons or Lovelace cards rendered in the action strip. |
 
+## Entity discovery
+
+The card auto-detects your vehicle prefix by scanning for BMW Cardata sensors in the format `sensor.<vehicle>_<suffix>`.
+For an X3 xDrive30e the prefix would be `x3_xdrive30e`, so the card expects entities such as `sensor.x3_xdrive30e_range_ev_remaining_range`.
+The following suffixes are used to populate the built-in UI sections:
+
+| Card field | Required suffix |
+| --- | --- |
+| Fuel level | `range_tank_level` |
+| Fuel/combined range | `range_total_range_last_sent` |
+| EV range | `range_ev_remaining_range` |
+| State of charge | `battery_hv_state_of_charge` |
+| Target state of charge | `state_of_charge_predicted_on_integration_side` |
+| Odometer | `vehicle_mileage` |
+| Sunroof status | `sunroof_overall_state` |
+| Door/lock summary | `doors_overall_state` |
+| Tire pressures | `tire_pressure_front_left`, `tire_pressure_front_right`, `tire_pressure_rear_left`, `tire_pressure_rear_right` |
+| Charging power | `predicted_charge_speed` |
+| Charging voltage/current | `charging_ev_ac_charging_voltage`, `charging_ev_ac_charging_current` |
+| Charging program | `charging_ev_charging_preference` |
+| Preconditioning state | `preconditioning_state` |
+| Window states | `window_state_front_driver`, `window_state_front_passenger`, `window_state_rear_driver`, `window_state_rear_passenger` |
+
+If you use a person tracker for the map popup, set `device_tracker` to your `person.*` entity (e.g., `person.bmw`).
+The default mapping aligns with the entities produced by the BMW Cardata integration, including the list above for an X3 xDrive30e.
+
 ## Localization support
 
 <details>

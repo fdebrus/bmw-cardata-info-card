@@ -11,6 +11,7 @@ export const PREVIEW_CONFIG_TYPES = ['btn_preview', 'card_preview', 'tire_previe
 export const CARDATA_ENTITY_MAP: Record<string, string> = {
   doorStatusOverall: 'doors_overall_state',
   fuelLevel: 'range_tank_level',
+  rangeLiquid: 'range_total_range_last_sent',
   rangeElectric: 'range_ev_remaining_range',
   soc: 'battery_hv_state_of_charge',
   maxSoc: 'state_of_charge_predicted_on_integration_side',
@@ -21,9 +22,10 @@ export const CARDATA_ENTITY_MAP: Record<string, string> = {
   tirePressureRearLeft: 'tire_pressure_rear_left',
   tirePressureRearRight: 'tire_pressure_rear_right',
   precondStatus: 'preconditioning_state',
-  chargingPower: 'chargingpowerkw',
+  chargingPower: 'predicted_charge_speed',
   chargingVoltage: 'charging_ev_ac_charging_voltage',
   chargingCurrent: 'charging_ev_ac_charging_current',
+  selectedProgram: 'charging_ev_charging_preference',
 };
 
 export const CARDATA_WINDOW_SUFFIXES = [
