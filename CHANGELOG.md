@@ -1,7 +1,24 @@
+<a id="v0.1.15"></a>
+# [bmw-cardata-info-card v0.1.15](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.15) - 2025-12-12
+
+test
+
+[Changes][v0.1.15]
+
+
 <a id="v0.1.14"></a>
 # [bmw-cardata-info-card v0.1.14](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.14) - 2025-12-12
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.14 -->
+
+## What's Changed
+### Other Changes
+* Remove AMG references and restore BMW backgrounds by [@fdebrus](https://github.com/fdebrus) in [#19](https://github.com/fdebrus/bmw-cardata-info-card/pull/19)
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.13...v0.1.14
 
 [Changes][v0.1.14]
 
@@ -230,6 +247,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.15]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.14...v0.1.15
 [v0.1.14]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.13...v0.1.14
 [v0.1.13]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.12...v0.1.13
 [v0.1.12]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.11...v0.1.12
