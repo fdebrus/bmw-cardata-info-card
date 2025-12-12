@@ -1,7 +1,25 @@
+<a id="v0.1.14"></a>
+# [bmw-cardata-info-card v0.1.14](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.14) - 2025-12-12
+
+test
+
+[Changes][v0.1.14]
+
+
 <a id="v0.1.13"></a>
 # [bmw-cardata-info-card v0.1.13](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.13) - 2025-12-12
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.13 -->
+
+## What's Changed
+### Other Changes
+* Support vehicle metadata sensor for discovery by [@fdebrus](https://github.com/fdebrus) in [#17](https://github.com/fdebrus/bmw-cardata-info-card/pull/17)
+* Fix deterministic vehicle prefix detection by [@fdebrus](https://github.com/fdebrus) in [#18](https://github.com/fdebrus/bmw-cardata-info-card/pull/18)
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.12...v0.1.13
 
 [Changes][v0.1.13]
 
@@ -212,6 +230,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.14]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.13...v0.1.14
 [v0.1.13]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.12...v0.1.13
 [v0.1.12]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.11...v0.1.12
 [v0.1.11]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.10...v0.1.11
