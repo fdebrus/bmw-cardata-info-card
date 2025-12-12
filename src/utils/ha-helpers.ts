@@ -42,7 +42,32 @@ let cachedVehiclePrefix: string | null = null;
 
 const CARDATA_SUFFIXES = Array.from(new Set([...Object.values(CARDATA_ENTITY_MAP), ...CARDATA_WINDOW_SUFFIXES]));
 
-export function detectVehiclePrefix(hass: HomeAssistant): string | null {
+const CAR_ENTITY_SUFFIX = 'car';
+const METADATA_SUFFIX = 'vehicle_metadata';
+const DISCOVERY_SUFFIXES = Array.from(new Set([...CARDATA_SUFFIXES, CAR_ENTITY_SUFFIX, METADATA_SUFFIX]));
+
+const derivePrefixFromEntity = (entityId: string | undefined): string | null => {
+  if (!entityId || !entityId.startsWith('sensor.')) return null;
+
+  const withoutDomain = entityId.replace('sensor.', '');
+  const suffixesToCheck = DISCOVERY_SUFFIXES;
+
+  for (const suffix of suffixesToCheck) {
+    if (withoutDomain.endsWith(`_${suffix}`)) {
+      return withoutDomain.slice(0, withoutDomain.length - suffix.length - 1);
+    }
+  }
+
+  return null;
+};
+
+export function detectVehiclePrefix(hass: HomeAssistant, preferredEntity?: string): string | null {
+  const preferredPrefix = derivePrefixFromEntity(preferredEntity);
+  if (preferredPrefix) {
+    cachedVehiclePrefix = preferredPrefix;
+    return preferredPrefix;
+  }
+
   if (cachedVehiclePrefix) return cachedVehiclePrefix;
 
   const sensorEntities = Object.keys(hass.states)
@@ -51,7 +76,7 @@ export function detectVehiclePrefix(hass: HomeAssistant): string | null {
 
   for (const entityId of sensorEntities) {
     const withoutDomain = entityId.replace('sensor.', '');
-    for (const suffix of CARDATA_SUFFIXES) {
+    for (const suffix of DISCOVERY_SUFFIXES) {
       if (withoutDomain.endsWith(`_${suffix}`)) {
         cachedVehiclePrefix = withoutDomain.slice(0, withoutDomain.length - suffix.length - 1);
         return cachedVehiclePrefix;
@@ -62,11 +87,11 @@ export function detectVehiclePrefix(hass: HomeAssistant): string | null {
   return null;
 }
 
-export function resolveEntity(hass: HomeAssistant, key: string): string | null {
+export function resolveEntity(hass: HomeAssistant, key: string, preferredEntity?: string): string | null {
   const suffix = CARDATA_ENTITY_MAP[key];
   if (!suffix) return null;
 
-  const prefix = detectVehiclePrefix(hass);
+  const prefix = detectVehiclePrefix(hass, preferredEntity);
   if (!prefix) return null;
 
   const entityId = `sensor.${prefix}_${suffix}`;
@@ -77,7 +102,7 @@ const getVehicleEntities = memoizeOne(
   async (hass: HomeAssistant, _config: { entity: string }, component: VehicleCard): Promise<VehicleEntities> => {
     const entityIds: VehicleEntities = {};
 
-    const prefix = detectVehiclePrefix(hass);
+    const prefix = detectVehiclePrefix(hass, _config.entity);
 
     if (!prefix) {
       component._entityNotFound = true;
@@ -93,7 +118,7 @@ const getVehicleEntities = memoizeOne(
     };
 
     Object.keys(CARDATA_ENTITY_MAP).forEach((key) => {
-      const entityId = resolveEntity(hass, key);
+      const entityId = resolveEntity(hass, key, _config.entity);
       if (entityId) {
         registerEntity(key, entityId);
       }
@@ -148,8 +173,21 @@ async function getModelName(hass: HomeAssistant, entityCar: string): Promise<str
 
 export function getCarEntity(hass: HomeAssistant): string {
   console.log('Getting car entity');
-  const entities = Object.keys(hass.states).filter((entity) => entity.startsWith('sensor.') && entity.endsWith('_car'));
-  return entities[0] || '';
+  const suffixes = [
+    '_car',
+    '_vehicle_mileage',
+    '_range_total_range_last_sent',
+    '_battery_hv_state_of_charge',
+    '_range_ev_remaining_range',
+    '_range_tank_level',
+    '_vehicle_metadata',
+  ];
+
+  const entity = Object.keys(hass.states).find(
+    (candidate) => candidate.startsWith('sensor.') && suffixes.some((suffix) => candidate.endsWith(suffix))
+  );
+
+  return entity || '';
 }
 
 export async function createCustomButtons(
