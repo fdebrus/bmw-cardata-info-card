@@ -416,7 +416,8 @@ export class VehicleCard extends LitElement implements LovelaceCard {
 
     return html`
       <ha-card style=${this._computeCardStyles()} class=${this._computeClasses()} ?no-header=${noHeader}>
-        ${this._loading ? loadingEl : mainContent}
+        <div class="bg"></div>
+        <div class="content">${this._loading ? loadingEl : mainContent}</div>
       </ha-card>
     `;
   }
@@ -1488,9 +1489,10 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   /* ---------------------------- COMPUTE CARD STYLES & CLASSES ---------------------------- */
   private _computeCardStyles() {
     // if (!this._resizeInitiated) return;
-    const backgroundUrl = this.isDark ? IMAGE.amgWhite : IMAGE.amgBlack;
+    const isDarkMode = this._hass?.themes?.darkMode ?? this.isDark;
+    const backgroundUrl = isDarkMode ? IMAGE.bmwDark : IMAGE.bmwLight;
     return styleMap({
-      '--vic-background-image': this.config.show_background ? `url(${backgroundUrl})` : 'none',
+      '--vehicle-card-bg': this.config.show_background ? `url("${backgroundUrl}")` : 'none',
     });
   }
 
