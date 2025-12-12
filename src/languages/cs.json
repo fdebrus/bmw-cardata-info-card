@@ -16,9 +16,6 @@
             "stateUnknown": "Neznámý",
             "stateUnlocked": "Odemknuté",
             "statePressed": "Stisknuto",
-            "titleRemoteControl": "Vzdálené ovládání",
-            "titleServices": "Služby",
-            "toastCommandSent": "Příkaz odeslán úspěšně!",
             "toastImageError": "Chyba při nahrávání obrázku. Jsou povoleny pouze soubory PNG a JPEG.",
             "toastCardAlreadyExists": "Karta už existuje, zadejte jiný název"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Zámek nádrže",
             "doorlockstatusrearleft": "Zadní levé dveře",
             "doorlockstatusrearright": "Zadní pravé dveře"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Program nabíjení",
-            "labelCity": "Město",
-            "labelClose": "Zavřít",
-            "labelDepartureTime": "Čas odjezdu",
-            "labelDurationTime": "Doba trvání",
-            "labelLatitude": "Zeměpisná šířka",
-            "labelLockCar": "Zamknout auto",
-            "labelLongitude": "Zeměpisná délka",
-            "labelMaxStateOfCharge": "Maximální stav nabití",
-            "labelMoreInfo": "Více",
-            "labelMove": "Přesunout",
-            "labelNoSelection": "Žádný výběr",
-            "labelOpen": "Otevřít",
-            "labelPostCode": "PSČ",
-            "labelSave": "Uložit",
-            "labelSend": "Odeslat",
-            "labelSetMaxSoc": "Nastavit maximum",
-            "labelSetProgram": "Nastavit program",
-            "labelStart": "Start",
-            "labelStartTime": "Čas začátku",
-            "labelStop": "Stop",
-            "labelStopTime": "Čas konce",
-            "labelStreet": "Ulice",
-            "labelTilt": "Náklon",
-            "labelTime1": "Čas 1",
-            "labelTime2": "Čas 2",
-            "labelTime3": "Čas 3",
-            "labelTimeSelection": "Výběr času",
-            "labelTitle": "Název",
-            "labelUnlockCar": "Odemknout auto",
-            "labelWindowFrontLeft": "Přední vlevo",
-            "labelWindowFrontRight": "Přední vpravo",
-            "labelWindowRearLeft": "Zadní vlevo",
-            "labelWindowRearRight": "Zadní vpravo",
-            "labelSeatConfig": "Uložit konfiguraci sedadel",
-            "labelSetTempZone": "Uložit teplotní zónu",
-            "labelPreclimateStatus": "Předklimatický stav"
-        },
-        "servicesCtrl": {
-            "auxheat": "Pomocné vytápění",
-            "charge": "Nabíjení",
-            "doorsLock": "Zabezpečení",
-            "engine": "Ovládání motoru",
-            "preheat": "Předkondicionování",
-            "sendRoute": "Odeslat trasu",
-            "sigPos": "Signální pozice",
-            "sunroof": "Střešní okno",
-            "windows": "Okna"
         },
         "starterBattery": {
             "notAvailable": "Není k dispozici",
@@ -244,7 +191,6 @@
             "infoButton": "Vyberte kartu, kterou chcete nakonfigurovat.",
             "infoImages": "Není potřeba přidávat '-' pro každý řádek. Každý řádek bude automaticky považován za samostatnou URL adresu.",
             "infoMap": "Toto je konfigurace pro mapové vyskakovací okno.",
-            "infoServices": "Vyberte, které služby chcete povolit. Pokud je služba deaktivována, nebude v kartě zobrazena.",
             "uncheckAll": "Zrušit vše"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Vyberte konfiguraci pro mapu",
             "title": "Konfigurace mapy"
         },
-        "servicesConfig": {
-            "desc": "Vyberte služby, které chcete povolit.",
-            "title": "Konfigurace služeb"
-        },
         "showConfig": {
             "desc": "Vyberte položky, které chcete zobrazit.",
             "title": "Konfigurace zobrazení"
         },
         "showOpts": {
             "enable_map_popup": "Povolit vyskakovací okno mapy",
-            "enable_services_control": "Povolit ovládání služeb",
             "show_background": "Zobrazit pozadí",
             "show_buttons": "Zobrazit tlačítka",
             "show_error_notify": "Zobrazit oznámení o chybě",

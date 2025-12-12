@@ -16,9 +16,6 @@
             "stateUnknown": "Neznáme",
             "stateUnlocked": "Odomknuté",
             "statePressed": "Stlačené",
-            "titleRemoteControl": "Vzdialené ovládanie",
-            "titleServices": "Služby",
-            "toastCommandSent": "Príkaz úspešne odoslaný!",
             "toastImageError": "Chyba pri nahrávaní obrázka. Povolené sú iba súbory PNG a JPEG.",
             "toastCardAlreadyExists": "Karta už existuje, zvoľte inú názov"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Zámok nádrže",
             "doorlockstatusrearleft": "Zámok zadných ľavých dverí",
             "doorlockstatusrearright": "Zámok zadných pravých dverí"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Program nabíjania",
-            "labelCity": "Mesto",
-            "labelClose": "Zatvoriť",
-            "labelDepartureTime": "Čas odchodu",
-            "labelDurationTime": "Doba trvania",
-            "labelLatitude": "Zemepisná šírka",
-            "labelLockCar": "Zamknúť auto",
-            "labelLongitude": "Zemepisná dĺžka",
-            "labelMaxStateOfCharge": "Maximálny stav nabitia",
-            "labelMoreInfo": "Viac informácií",
-            "labelMove": "Presunúť",
-            "labelNoSelection": "Žiadny výber",
-            "labelOpen": "Otvoriť",
-            "labelPostCode": "PSČ",
-            "labelSave": "Uložiť",
-            "labelSend": "Odoslať",
-            "labelSetMaxSoc": "Nastaviť maximum",
-            "labelSetProgram": "Nastaviť program",
-            "labelStart": "Štart",
-            "labelStartTime": "Čas začiatku",
-            "labelStop": "Stop",
-            "labelStopTime": "Čas konca",
-            "labelStreet": "Ulica",
-            "labelTilt": "Náklon",
-            "labelTime1": "Čas 1",
-            "labelTime2": "Čas 2",
-            "labelTime3": "Čas 3",
-            "labelTimeSelection": "Výber času",
-            "labelTitle": "Názov",
-            "labelUnlockCar": "Odomknúť auto",
-            "labelWindowFrontLeft": "Predné vľavo",
-            "labelWindowFrontRight": "Predné vpravo",
-            "labelWindowRearLeft": "Zadné vľavo",
-            "labelWindowRearRight": "Zadné vpravo",
-            "labelSeatConfig": "Uložiť konfiguráciu sedadiel",
-            "labelSetTempZone": "Uložiť zónu teploty",
-            "labelPreclimateStatus": "Predklimatický stav"
-        },
-        "servicesCtrl": {
-            "auxheat": "Prídavné kúrenie",
-            "charge": "Nabíjanie",
-            "doorsLock": "Bezpečnosť",
-            "engine": "Ovládanie motora",
-            "preheat": "Predhrievanie",
-            "sendRoute": "Odoslať trasu",
-            "sigPos": "Signalizovať polohu",
-            "sunroof": "Strešné okno",
-            "windows": "Okienka"
         },
         "starterBattery": {
             "notAvailable": "Nie je dostupné",
@@ -244,7 +191,6 @@
             "infoButton": "Vyberte kartu, ktorú chcete nakonfigurovať.",
             "infoImages": "Nie je potrebné pridávať '-' pre každý riadok. Každý riadok bude automaticky považovaný za samostatnú URL adresu.",
             "infoMap": "Toto je konfigurácia pre mapové vyskakovacie okno.",
-            "infoServices": "Vyberte služby, ktoré chcete povoliť. Ak je služba deaktivovaná, nebude na karte zobrazená.",
             "uncheckAll": "Zrušiť všetko"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Vyberte konfiguráciu pre mapu",
             "title": "Konfigurácia mapy"
         },
-        "servicesConfig": {
-            "desc": "Vyberte služby, ktoré chcete povoliť.",
-            "title": "Konfigurácia služieb"
-        },
         "showConfig": {
             "desc": "Vyberte položky, ktoré chcete zobraziť.",
             "title": "Konfigurácia zobrazenia"
         },
         "showOpts": {
             "enable_map_popup": "Povoliť vyskakovacie okno mapy",
-            "enable_services_control": "Povoliť ovládanie služieb",
             "show_background": "Zobraziť pozadie",
             "show_buttons": "Zobraziť tlačidlá",
             "show_error_notify": "Zobraziť upozornenie na chybu",

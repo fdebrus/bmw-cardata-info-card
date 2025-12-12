@@ -16,9 +16,6 @@
             "stateUnknown": "未知",
             "stateUnlocked": "解锁",
             "statePressed": "按下",
-            "titleRemoteControl": "遥控",
-            "titleServices": "服务",
-            "toastCommandSent": "命令发送成功！",
             "toastImageError": "上传图片时出错，仅允许 PNG 和 JPEG 文件。",
             "toastCardAlreadyExists": "卡已存在"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "气帽锁",
             "doorlockstatusrearleft": "门锁左后侧",
             "doorlockstatusrearright": "右后门锁"
-        },
-        "serviceData": {
-            "labelChargeProgram": "收费方案",
-            "labelCity": "城市",
-            "labelClose": "关闭",
-            "labelDepartureTime": "出发时间",
-            "labelDurationTime": "持续时间",
-            "labelLatitude": "纬度",
-            "labelLockCar": "锁车",
-            "labelLongitude": "经度",
-            "labelMaxStateOfCharge": "最大充电状态",
-            "labelMoreInfo": "更多信息",
-            "labelMove": "移动",
-            "labelNoSelection": "没有选择",
-            "labelOpen": "打开",
-            "labelPostCode": "邮政编码",
-            "labelSave": "节省",
-            "labelSend": "发送",
-            "labelSetMaxSoc": "设置最大值",
-            "labelSetProgram": "设定程序",
-            "labelStart": "开始",
-            "labelStartTime": "开始时间",
-            "labelStop": "停止",
-            "labelStopTime": "停止时间",
-            "labelStreet": "街道",
-            "labelTilt": "倾斜",
-            "labelTime1": "时间1",
-            "labelTime2": "时间2",
-            "labelTime3": "时间3",
-            "labelTimeSelection": "时间选择",
-            "labelTitle": "标题",
-            "labelUnlockCar": "解锁汽车",
-            "labelWindowFrontLeft": "左前",
-            "labelWindowFrontRight": "右前",
-            "labelWindowRearLeft": "左后",
-            "labelWindowRearRight": "右后",
-            "labelSeatConfig": "保存座位配置",
-            "labelSetTempZone": "保存温区",
-            "labelPreclimateStatus": "预气候状态"
-        },
-        "servicesCtrl": {
-            "auxheat": "辅助加热",
-            "charge": "收费",
-            "doorsLock": "安全",
-            "engine": "发动机控制",
-            "preheat": "预调节",
-            "sendRoute": "发送路线",
-            "sigPos": "信号位置",
-            "sunroof": "天窗",
-            "windows": "视窗"
         },
         "starterBattery": {
             "notAvailable": "无法使用",
@@ -244,7 +191,6 @@
             "infoButton": "选择您要配置的卡。",
             "infoImages": "无需为每行添加“-”。每一行将自动被视为一个单独的 URL。",
             "infoMap": "这是地图弹出窗口的配置。",
-            "infoServices": "选择您要启用的服务。如果某项服务被禁用，该服务将不会显示在卡中。",
             "uncheckAll": "全部取消勾选"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "选择地图的配置",
             "title": "地图配置"
         },
-        "servicesConfig": {
-            "desc": "选择您要启用的服务。",
-            "title": "服务配置"
-        },
         "showConfig": {
             "desc": "选择您要显示的项目。",
             "title": "显示配置"
         },
         "showOpts": {
             "enable_map_popup": "启用地图弹出窗口",
-            "enable_services_control": "启用服务控制",
             "show_background": "显示背景",
             "show_buttons": "显示按钮",
             "show_error_notify": "显示错误通知",

@@ -16,9 +16,6 @@
             "stateUnknown": "Unbekannt",
             "stateUnlocked": "Entriegelt",
             "statePressed": "Gedrückt",
-            "titleRemoteControl": "Fernbedienung",
-            "titleServices": "Dienste",
-            "toastCommandSent": "Befehl gesendet!",
             "toastImageError": "Fehler beim Hochladen des Bildes. Es sind nur PNG- und JPEG-Dateien erlaubt.",
             "toastCardAlreadyExists": "Karte existiert bereits, geben Sie einen anderen Namen ein"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Tankverriegelung",
             "doorlockstatusrearleft": "Türverriegelung hinten links",
             "doorlockstatusrearright": "Türverriegelung hinten rechts"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Ladeprogramm",
-            "labelCity": "Stadt",
-            "labelClose": "Schließen",
-            "labelDepartureTime": "Abfahrtszeit",
-            "labelDurationTime": "Dauerzeit",
-            "labelLatitude": "Breitengrad",
-            "labelLockCar": "Auto verriegeln",
-            "labelLongitude": "Längengrad",
-            "labelMaxStateOfCharge": "Maximaler Ladezustand",
-            "labelMoreInfo": "Mehr Infos",
-            "labelMove": "Bewegen",
-            "labelNoSelection": "Keine Auswahl",
-            "labelOpen": "Öffnen",
-            "labelPostCode": "Postleitzahl",
-            "labelSave": "Speichern",
-            "labelSend": "Senden",
-            "labelSetMaxSoc": "Maximum setzen",
-            "labelSetProgram": "Programm setzen",
-            "labelStart": "Start",
-            "labelStartTime": "Startzeit",
-            "labelStop": "Stopp",
-            "labelStopTime": "Stoppzeit",
-            "labelStreet": "Straße",
-            "labelTilt": "Kippen",
-            "labelTime1": "Zeit 1",
-            "labelTime2": "Zeit 2",
-            "labelTime3": "Zeit 3",
-            "labelTimeSelection": "Zeitauswahl",
-            "labelTitle": "Titel",
-            "labelUnlockCar": "Auto entriegeln",
-            "labelWindowFrontLeft": "Vorne links",
-            "labelWindowFrontRight": "Vorne rechts",
-            "labelWindowRearLeft": "Hinten links",
-            "labelWindowRearRight": "Hinten rechts",
-            "labelSeatConfig": "Sitzkonfiguration speichern",
-            "labelSetTempZone": "Temperaturzone speichern",
-            "labelPreclimateStatus": "Status vor dem Klima"
-        },
-        "servicesCtrl": {
-            "auxheat": "Zusatzheizung",
-            "charge": "Laden",
-            "doorsLock": "Sicherheit",
-            "engine": "Motorsteuerung",
-            "preheat": "Vorkonditionierung",
-            "sendRoute": "Route senden",
-            "sigPos": "Position signalisieren",
-            "sunroof": "Schiebedach",
-            "windows": "Fenster"
         },
         "starterBattery": {
             "notAvailable": "Nicht verfügbar",
@@ -244,7 +191,6 @@
             "infoButton": "Wählen Sie die Karte aus, die Sie konfigurieren möchten.",
             "infoImages": "Es ist nicht erforderlich, für jede Zeile ein '-' hinzuzufügen. Jede Zeile wird automatisch als separate URL behandelt.",
             "infoMap": "Dies ist die Konfiguration für das Karten-Popup.",
-            "infoServices": "Wählen Sie die Dienste aus, die Sie aktivieren möchten. Wenn ein Dienst deaktiviert ist, wird er nicht auf der Karte angezeigt.",
             "uncheckAll": "Alles abwählen"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Wählen Sie die Konfiguration für die Karte",
             "title": "Karteneinstellungen"
         },
-        "servicesConfig": {
-            "desc": "Wählen Sie die Dienste aus, die Sie aktivieren möchten.",
-            "title": "Dienstkonfiguration"
-        },
         "showConfig": {
             "desc": "Wählen Sie die Elemente aus, die Sie anzeigen möchten.",
             "title": "Anzeigeeinstellungen"
         },
         "showOpts": {
             "enable_map_popup": "Karten-Popup aktivieren",
-            "enable_services_control": "Dienststeuerung aktivieren",
             "show_background": "Hintergrund anzeigen",
             "show_buttons": "Schaltflächen anzeigen",
             "show_error_notify": "Fehlermeldung anzeigen",

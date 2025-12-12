@@ -16,9 +16,6 @@
             "stateUnknown": "Desconocido",
             "stateUnlocked": "Desbloqueado",
             "statePressed": "Presionado",
-            "titleRemoteControl": "Control remoto",
-            "titleServices": "Servicios",
-            "toastCommandSent": "¡Comando enviado con éxito!",
             "toastImageError": "Error al subir la imagen. Solo se permiten archivos PNG y JPEG.",
             "toastCardAlreadyExists": "La tarjeta ya existe"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Bloqueo de tapa de combustible",
             "doorlockstatusrearleft": "Bloqueo de puerta trasera izquierda",
             "doorlockstatusrearright": "Bloqueo de puerta trasera derecha"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Programa de carga",
-            "labelCity": "Ciudad",
-            "labelClose": "Cerrar",
-            "labelDepartureTime": "Hora de salida",
-            "labelDurationTime": "Tiempo de duración",
-            "labelLatitude": "Latitud",
-            "labelLockCar": "Bloquear coche",
-            "labelLongitude": "Longitud",
-            "labelMaxStateOfCharge": "Máximo estado de carga",
-            "labelMoreInfo": "Más información",
-            "labelMove": "Mover",
-            "labelNoSelection": "Sin selección",
-            "labelOpen": "Abrir",
-            "labelPostCode": "Código postal",
-            "labelSave": "Guardar",
-            "labelSend": "Enviar",
-            "labelSetMaxSoc": "Establecer máximo",
-            "labelSetProgram": "Establecer programa",
-            "labelStart": "Iniciar",
-            "labelStartTime": "Hora de inicio",
-            "labelStop": "Detener",
-            "labelStopTime": "Hora de detención",
-            "labelStreet": "Calle",
-            "labelTilt": "Inclinación",
-            "labelTime1": "Hora 1",
-            "labelTime2": "Hora 2",
-            "labelTime3": "Hora 3",
-            "labelTimeSelection": "Selección de hora",
-            "labelTitle": "Título",
-            "labelUnlockCar": "Desbloquear coche",
-            "labelWindowFrontLeft": "Delante izquierda",
-            "labelWindowFrontRight": "Delante derecha",
-            "labelWindowRearLeft": "Detrás izquierda",
-            "labelWindowRearRight": "Detrás derecha",
-            "labelSeatConfig": "Guardar configuración de asiento",
-            "labelSetTempZone": "Guardar zona de temperatura",
-            "labelPreclimateStatus": "Estado preclimático"
-        },
-        "servicesCtrl": {
-            "auxheat": "Calefacción auxiliar",
-            "charge": "Cargar",
-            "doorsLock": "Seguridad",
-            "engine": "Control del motor",
-            "preheat": "Preacondicionamiento",
-            "sendRoute": "Enviar ruta",
-            "sigPos": "Posición de señal",
-            "sunroof": "Techo solar",
-            "windows": "Ventanas"
         },
         "starterBattery": {
             "notAvailable": "No disponible",
@@ -244,7 +191,6 @@
             "infoButton": "Seleccione la tarjeta que desea configurar.",
             "infoImages": "No es necesario agregar un '-' para cada línea. Cada línea se tratará como una URL separada automáticamente.",
             "infoMap": "Esta es la configuración para el popup del mapa.",
-            "infoServices": "Elija qué servicios desea habilitar. Si un servicio está deshabilitado, no se mostrará en la tarjeta.",
             "uncheckAll": "Deseleccionar todo"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Elija la configuración para el mapa",
             "title": "Configuración del mapa"
         },
-        "servicesConfig": {
-            "desc": "Elija los servicios que desea habilitar.",
-            "title": "Configuración de servicios"
-        },
         "showConfig": {
             "desc": "Elija los elementos que desea mostrar.",
             "title": "Configuración de visualización"
         },
         "showOpts": {
             "enable_map_popup": "Habilitar popup del mapa",
-            "enable_services_control": "Habilitar control de servicios",
             "show_background": "Mostrar fondo",
             "show_buttons": "Mostrar botones",
             "show_error_notify": "Mostrar notificación de error",

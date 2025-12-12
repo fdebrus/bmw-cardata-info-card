@@ -506,23 +506,10 @@ export class VehicleCard extends LitElement implements LovelaceCard {
         )
       : nothing;
 
-    // BMW cardata is read-only; expose the services status strip (mirroring Mercedes) but disabled
-    const readOnlyServices = html`
-      <div class="item readonly" aria-label="${this.localize('card.common.titleServices')}">
-        <ha-icon icon="mdi:cog-off-outline"></ha-icon>
-        <div class="added-item-arrow">
-          <span>${this.localize('card.common.titleServices')}</span>
-          <div class="subcard-icon readonly">
-            <span>${this.localize('card.common.stateLocked')}</span>
-          </div>
-        </div>
-      </div>
-    `;
-
     // Combine all parts and render
     return html`
       <div class="info-box" style=${`justify-content: ${justify}`}>
-        ${defaultIndicators} ${addedChargingInfo} ${readOnlyServices}
+        ${defaultIndicators} ${addedChargingInfo}
       </div>
     `;
   }
