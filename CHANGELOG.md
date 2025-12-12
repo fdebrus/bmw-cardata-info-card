@@ -1,7 +1,25 @@
+<a id="v0.1.9"></a>
+# [bmw-cardata-info-card v0.1.9](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.9) - 2025-12-12
+
+test
+
+[Changes][v0.1.9]
+
+
 <a id="v0.1.8"></a>
 # [bmw-cardata-info-card v0.1.8](https://github.com/fdebrus/bmw-cardata-info-card/releases/tag/v0.1.8) - 2025-12-11
 
 test
+
+<!-- Release notes generated using configuration in .github/release.yml at v0.1.8 -->
+
+## What's Changed
+### Other Changes
+* Guard swiper loop when only one image by [@fdebrus](https://github.com/fdebrus) in [#10](https://github.com/fdebrus/bmw-cardata-info-card/pull/10)
+* Handle undefined custom card selections by [@fdebrus](https://github.com/fdebrus) in [#11](https://github.com/fdebrus/bmw-cardata-info-card/pull/11)
+
+
+**Full Changelog**: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.7...v0.1.8
 
 [Changes][v0.1.8]
 
@@ -125,6 +143,7 @@ test
 [Changes][v0.1.0]
 
 
+[v0.1.9]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.8...v0.1.9
 [v0.1.8]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.7...v0.1.8
 [v0.1.7]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.6...v0.1.7
 [v0.1.6]: https://github.com/fdebrus/bmw-cardata-info-card/compare/v0.1.5...v0.1.6
