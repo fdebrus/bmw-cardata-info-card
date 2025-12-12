@@ -36,7 +36,6 @@ import {
   handleCardFirstUpdated,
   getCarEntity,
   handleCardSwipe,
-  convertMinutes,
   isEmpty,
   Create,
   isDarkColor,
@@ -104,6 +103,7 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   @state() _connected = false;
 
   // Misc
+  @state() windowEntities: string[] = [];
   @state() mainSectionItems: Record<string, HTMLElement> = {};
   @state() _cardPreviewId?: string;
   @state() _cardId?: string | null;
@@ -1162,14 +1162,16 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   }
 
   private createDataArray(keys: EntityConfig[]): EntityConfig[] {
-    return keys.map((config) => this.getEntityInfoByKey(config));
+    return keys
+      .map((config) => this.getEntityInfoByKey(config))
+      .filter((config): config is EntityConfig => config !== null);
   }
 
-  private getEntityInfoByKey = ({ key, name, icon, state, unit }: EntityConfig): EntityConfig => {
+  private getEntityInfoByKey = ({ key, name, icon, state, unit }: EntityConfig): EntityConfig | null => {
     const vehicleEntityKey = this.vehicleEntities[key];
 
     if (!vehicleEntityKey) {
-      return this.getFallbackEntityInfo({ key, name, icon, state, unit });
+      return null;
     }
 
     const defaultInfo = this.getDefaultEntityInfo({ key, name, icon, state, unit }, vehicleEntityKey);
@@ -1195,44 +1197,6 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   };
 
   /* --------------------------- ENTITY INFO BY KEYS -------------------------- */
-
-  private getFallbackEntityInfo = ({ key, name, icon, state, unit }: EntityConfig): EntityConfig => {
-    const lang = this.userLang;
-
-    let newState = state;
-    let activeState: boolean = false;
-
-    switch (key) {
-      case 'selectedProgram':
-        newState =
-          StateMapping.chargeSelectedProgram(lang)[
-            this.getEntityAttribute(this.vehicleEntities.rangeElectric?.entity_id, 'selectedChargeProgram')
-          ];
-        break;
-
-      case 'doorStatusOverall':
-        const doorStatus = this.getDoorStatusInfo();
-        newState = doorStatus.state;
-        activeState = doorStatus.active;
-        break;
-
-      case 'drivenTimeReset':
-      case 'drivenTimeStart':
-        const entityKey = key === 'drivenTimeReset' ? 'distanceReset' : 'distanceStart';
-        const timeState = this.getEntityAttribute(this.vehicleEntities[entityKey]?.entity_id, key);
-        newState = timeState ? convertMinutes(parseInt(timeState)) : '';
-        break;
-
-      case 'drivenTimeZEReset':
-      case 'drivenTimeZEStart':
-        const zeKey = key === 'drivenTimeZEReset' ? 'distanceZEReset' : 'distanceZEStart';
-        const zeTime = this.getEntityAttribute(this.vehicleEntities[zeKey]?.entity_id, key);
-        newState = zeTime ? convertMinutes(parseInt(zeTime)) : '';
-        break;
-    }
-
-    return { key, name, icon, state: newState, active: activeState, unit };
-  };
 
   private getDefaultEntityInfo = (
     { key, name, icon, state, unit }: EntityConfig,
@@ -1273,7 +1237,24 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   private getChargingPowerInfo = (defaultInfo: EntityConfig, vehicleEntity: VehicleEntity): EntityConfig => {
     const powerStateDislay = this.getStateDisplay(vehicleEntity.entity_id);
 
-    return { ...defaultInfo, state: powerStateDislay };
+    if (powerStateDislay) {
+      return { ...defaultInfo, state: powerStateDislay };
+    }
+
+    const voltageEntity = this.vehicleEntities.chargingVoltage?.entity_id;
+    const currentEntity = this.vehicleEntities.chargingCurrent?.entity_id;
+
+    if (voltageEntity && currentEntity) {
+      const voltage = Number(this.getEntityState(voltageEntity));
+      const current = Number(this.getEntityState(currentEntity));
+
+      if (!Number.isNaN(voltage) && !Number.isNaN(current)) {
+        const calculatedPower = (voltage * current) / 1000;
+        return { ...defaultInfo, state: `${calculatedPower.toFixed(2)} kW` };
+      }
+    }
+
+    return defaultInfo;
   };
 
   private getParkBrakeInfo = (defaultInfo: EntityConfig, vehicleEntity: VehicleEntity): EntityConfig => {
@@ -1289,83 +1270,40 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   };
 
   private getDoorStatusInfo = (): { state: string; active: boolean } => {
-    let doorStatusOverall: string;
-    const lang = this.userLang;
-    const lockSensorEntityId = this.vehicleEntities.lockSensor?.entity_id;
-    const chargeFlapDCStatusEntityId = this.vehicleEntities.chargeFlapDCStatus?.entity_id;
-    const doorState = this.getEntityAttribute(lockSensorEntityId, 'doorStatusOverall');
-    const chargeFlapDCStatus = this.getEntityState(chargeFlapDCStatusEntityId);
+    const doorStatusEntityId = this.vehicleEntities.doorStatusOverall?.entity_id;
 
-    if (!lockSensorEntityId && !chargeFlapDCStatusEntityId) {
+    if (!doorStatusEntityId) {
       return { state: '', active: false };
     }
 
-    let closed = chargeFlapDCStatus === '1' && doorState === '1';
-
-    if (closed) {
-      doorStatusOverall = this.localize('card.common.stateClosed');
-    } else {
-      const doorAttributeStates: Record<string, any> = {};
-      Object.keys(StateMapping.doorAttributes(lang)).forEach((attribute) => {
-        if (attribute === 'chargeflapdcstatus' && chargeFlapDCStatusEntityId !== undefined) {
-          doorAttributeStates[attribute] = this.getEntityState(chargeFlapDCStatusEntityId);
-        } else if (lockSensorEntityId !== undefined) {
-          doorAttributeStates[attribute] = this.getEntityAttribute(lockSensorEntityId, attribute);
-        }
-      });
-      const openDoors = Object.keys(doorAttributeStates).filter(
-        (attribute) => doorAttributeStates[attribute] === '0' || doorAttributeStates[attribute] === true
-      ).length;
-      if (openDoors === 0) {
-        closed = true;
-        doorStatusOverall = this.localize('card.common.stateClosed');
-      } else {
-        doorStatusOverall = `${openDoors} ${this.localize('card.common.stateOpen')}`;
-      }
-    }
+    const rawDoorState = this.getEntityState(doorStatusEntityId);
+    const isClosed = rawDoorState?.toString().toUpperCase() === 'SECURED';
 
     return {
-      state: doorStatusOverall,
-      active: closed,
+      state: isClosed ? this.localize('card.common.stateClosed') : this.localize('card.common.stateOpen'),
+      active: Boolean(isClosed),
     };
   };
 
-  private getWindowsClosedInfo = (defaultInfo: EntityConfig, vehicleEntity: VehicleEntity): EntityConfig => {
-    let windowStateOverall: string;
-    const lang = this.userLang;
-    const sunroofStatus = this.getEntityState(this.vehicleEntities.sunroofStatus?.entity_id);
-    const windowsState = this.getBooleanState(vehicleEntity.entity_id);
-    let closed = sunroofStatus === '0' && windowsState;
+  private getWindowsClosedInfo = (defaultInfo: EntityConfig, _vehicleEntity: VehicleEntity): EntityConfig => {
+    void _vehicleEntity;
+    const isClosedState = (state?: string | null) => {
+      if (state === null || state === undefined) return false;
+      const normalized = state.toString().toUpperCase();
+      return normalized === 'CLOSED' || normalized === '0' || normalized === 'FALSE';
+    };
 
-    if (closed) {
-      windowStateOverall = this.localize('card.common.stateClosed');
-    } else {
-      const windowAttributeStates: Record<string, any> = {};
+    const openWindows = this.windowEntities.filter((entityId) => !isClosedState(this.getEntityState(entityId)));
+    const sunroofState = this.vehicleEntities.sunroofStatus?.entity_id
+      ? this.getEntityState(this.vehicleEntities.sunroofStatus.entity_id)
+      : undefined;
 
-      Object.keys(StateMapping.windowAttributes(lang)).forEach((attribute) => {
-        let attributeState: string | boolean | null | undefined;
-        if (attribute === 'sunroofstatus' && this.vehicleEntities.sunroofStatus?.entity_id !== undefined) {
-          attributeState = this.getEntityState(this.vehicleEntities.sunroofStatus.entity_id) === '1' ? true : false;
-        } else {
-          attributeState = this.getEntityAttribute(vehicleEntity.entity_id, attribute);
-        }
+    const closed = openWindows.length === 0 && (sunroofState === undefined || isClosedState(sunroofState));
 
-        if (attributeState !== undefined && attributeState !== null) {
-          windowAttributeStates[attribute] = attributeState;
-        }
-      });
+    const windowStateOverall = closed
+      ? this.localize('card.common.stateClosed')
+      : `${openWindows.length} ${this.localize('card.common.stateOpen')}`;
 
-      const openWindows = Object.keys(windowAttributeStates).filter(
-        (attribute) => windowAttributeStates[attribute] === '0' || windowAttributeStates[attribute] === true
-      ).length;
-
-      if (openWindows === 0) {
-        closed = true;
-        windowStateOverall = this.localize('card.common.stateClosed');
-      } else {
-        windowStateOverall = `${openWindows} ${this.localize('card.common.stateOpen')}`;
-      }
-    }
     return {
       ...defaultInfo,
       state: windowStateOverall,
@@ -1385,16 +1323,18 @@ export class VehicleCard extends LitElement implements LovelaceCard {
   };
 
   private getLockSensorInfo = (defaultInfo: EntityConfig, vehicleEntity: VehicleEntity): EntityConfig => {
-    const lang = this.userLang;
     const lockState = this.getEntityState(vehicleEntity.entity_id);
-    const lockStateFormatted = StateMapping.lockStates(lang)[lockState] || StateMapping.lockStates['4'];
-    const lockIcon = lockState === '2' || lockState === '1' ? 'mdi:lock' : 'mdi:lock-open';
+    const isLocked = lockState?.toString().toUpperCase() === 'SECURED';
+    const lockIcon = isLocked ? 'mdi:lock' : 'mdi:lock-open-variant';
+    const lockStateFormatted = isLocked
+      ? this.localize('card.common.stateLocked') || 'Locked'
+      : this.localize('card.common.stateUnlocked') || 'Unlocked';
 
     return {
       ...defaultInfo,
       icon: lockIcon,
       state: lockStateFormatted,
-      active: lockState === '2' || lockState === '1' ? true : false,
+      active: isLocked,
     };
   };
 

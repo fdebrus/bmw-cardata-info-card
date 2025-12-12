@@ -27,7 +27,6 @@ const createCard = (key: string, icon: string, config: string, button: string, l
 export const cardTypes = (lang: string) => [
   createCard('tripCards', 'mdi:map-marker-path', 'trip_card', 'trip_button', lang),
   createCard('vehicleCards', 'mdi:car-info', 'vehicle_card', 'vehicle_button', lang),
-  createCard('ecoCards', 'mdi:leaf', 'eco_card', 'eco_button', lang),
   createCard('tyreCards', 'mdi:tire', 'tyre_card', 'tyre_button', lang),
 ];
 
@@ -46,55 +45,25 @@ const createItem = (key: string, nameKey: string, lang: string, icon?: string): 
 const tripOverview = (lang: string) => [
   createItem('odometer', 'tripCard.odometer', lang, 'mdi:counter'),
   createItem('fuelLevel', 'tripCard.fuelLevel', lang),
-  createItem('adBlueLevel', 'tripCard.adBlueLevel', lang, 'mdi:fuel'),
-  createItem('rangeLiquid', 'tripCard.rangeLiquid', lang),
   createItem('rangeElectric', 'tripCard.rangeElectric', lang),
   createItem('soc', 'tripCard.soc', lang),
   createItem('maxSoc', 'tripCard.maxSoc', lang),
 ];
 
-const tripFromReset = (lang: string): CardItem[] => [
-  createItem('distanceReset', 'tripCard.distanceReset', lang),
-  createItem('drivenTimeReset', 'tripCard.drivenTimeReset', lang, 'mdi:clock'),
-  createItem('distanceZEReset', 'tripCard.distanceZEReset', lang),
-  createItem('drivenTimeZEReset', 'tripCard.drivenTimeZEReset', lang, 'mdi:clock'),
-  createItem('averageSpeedReset', 'tripCard.averageSpeedReset', lang, 'mdi:speedometer'),
-  createItem('liquidConsumptionReset', 'tripCard.liquidConsumptionReset', lang),
-  createItem('electricConsumptionReset', 'tripCard.electricConsumptionReset', lang),
-];
+const tripFromReset = (): CardItem[] => [];
 
-const tripFromStart = (lang: string): CardItem[] => [
-  createItem('distanceStart', 'tripCard.distanceStart', lang),
-  createItem('drivenTimeStart', 'tripCard.drivenTimeStart', lang, 'mdi:clock'),
-  createItem('distanceZEStart', 'tripCard.distanceZEStart', lang),
-  createItem('drivenTimeZEStart', 'tripCard.drivenTimeZEStart', lang, 'mdi:clock'),
-  createItem('averageSpeedStart', 'tripCard.averageSpeedStart', lang, 'mdi:speedometer-slow'),
-  createItem('liquidConsumptionStart', 'tripCard.liquidConsumptionStart', lang),
-  createItem('electricConsumptionStart', 'tripCard.electricConsumptionStart', lang),
-];
+const tripFromStart = (): CardItem[] => [];
 
 const vehicleOverview = (lang: string): CardItem[] => [
   createItem('lockSensor', 'vehicleCard.lockSensor', lang),
   createItem('windowsClosed', 'vehicleCard.windowsClosed', lang),
   createItem('doorStatusOverall', 'vehicleCard.doorStatusOverall', lang, 'mdi:car-door-lock'),
-  createItem('parkBrake', 'vehicleCard.parkBrake', lang),
-  createItem('ignitionState', 'vehicleCard.ignitionState', lang),
+  createItem('sunroofStatus', 'vehicleCard.sunroofStatus', lang),
 ];
 
-const vehicleWarnings = (lang: string): CardItem[] => [
-  createItem('starterBatteryState', 'vehicleCard.starterBatteryState', lang),
-  createItem('lowCoolantLevel', 'vehicleCard.lowCoolantLevel', lang, 'mdi:car-coolant-level'),
-  createItem('lowBrakeFluid', 'vehicleCard.lowBrakeFluid', lang, 'mdi:car-brake-fluid-level'),
-  createItem('lowWashWater', 'vehicleCard.lowWashWater', lang),
-  createItem('tirePressureWarning', 'vehicleCard.tirePressureWarning', lang),
-];
+const vehicleWarnings = (): CardItem[] => [];
 
-const ecoScores = (lang: string): CardItem[] => [
-  createItem('ecoScoreBonusRange', 'ecoCard.ecoScoreBonusRange', lang),
-  createItem('ecoScoreAcceleration', 'ecoCard.ecoScoreAcceleration', lang),
-  createItem('ecoScoreConstant', 'ecoCard.ecoScoreConstant', lang),
-  createItem('ecoScoreFreeWheel', 'ecoCard.ecoScoreFreeWheel', lang),
-];
+const ecoScores = (): CardItem[] => [];
 
 const tyrePressures = (lang: string): CardItem[] => [
   createItem('tirePressureFrontLeft', 'tyreCard.tirePressureFrontLeft', lang, 'mdi:tire'),
@@ -126,11 +95,11 @@ const precondTemps = (lang: string): CardItem[] => [
 
 export const baseDataKeys = (lang: string) => ({
   tripOverview: tripOverview(lang),
-  tripFromReset: tripFromReset(lang),
-  tripFromStart: tripFromStart(lang),
+  tripFromReset: tripFromReset(),
+  tripFromStart: tripFromStart(),
   vehicleOverview: vehicleOverview(lang),
-  vehicleWarnings: vehicleWarnings(lang),
-  ecoScores: ecoScores(lang),
+  vehicleWarnings: vehicleWarnings(),
+  ecoScores: ecoScores(),
   tyrePressures: tyrePressures(lang),
   chargingOverview: chargingOverview(lang),
   precondSeats: precondSeats(lang),

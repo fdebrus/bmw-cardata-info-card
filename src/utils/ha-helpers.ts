@@ -5,13 +5,18 @@ import { ExtraMapCardConfig, MapEntityConfig } from 'extra-map-card';
 import memoizeOne from 'memoize-one';
 
 import { VehicleCard } from '../bmw-cardata-info-card';
-import { combinedFilters, CARD_UPADE_SENSOR, CARD_VERSION, REPOSITORY } from '../const/const';
+import {
+  CARDATA_ENTITY_MAP,
+  CARDATA_WINDOW_SUFFIXES,
+  CARD_UPADE_SENSOR,
+  CARD_VERSION,
+  REPOSITORY,
+} from '../const/const';
 import { baseDataKeys } from '../const/data-keys';
 import { VehicleCardEditor } from '../editor';
 import {
   HomeAssistant,
   VehicleEntities,
-  VehicleEntity,
   VehicleCardConfig,
   BaseButtonConfig,
   CustomButtonEntity,
@@ -33,65 +38,79 @@ import { LovelaceCardConfig } from '../types/ha-frontend/lovelace/lovelace';
  * @returns
  */
 
+let cachedVehiclePrefix: string | null = null;
+
+const CARDATA_SUFFIXES = Array.from(new Set([...Object.values(CARDATA_ENTITY_MAP), ...CARDATA_WINDOW_SUFFIXES]));
+
+export function detectVehiclePrefix(hass: HomeAssistant): string | null {
+  if (cachedVehiclePrefix) return cachedVehiclePrefix;
+
+  const sensorEntities = Object.keys(hass.states)
+    .filter((entityId) => entityId.startsWith('sensor.'))
+    .sort();
+
+  for (const entityId of sensorEntities) {
+    const withoutDomain = entityId.replace('sensor.', '');
+    for (const suffix of CARDATA_SUFFIXES) {
+      if (withoutDomain.endsWith(`_${suffix}`)) {
+        cachedVehiclePrefix = withoutDomain.slice(0, withoutDomain.length - suffix.length - 1);
+        return cachedVehiclePrefix;
+      }
+    }
+  }
+
+  return null;
+}
+
+export function resolveEntity(hass: HomeAssistant, key: string): string | null {
+  const suffix = CARDATA_ENTITY_MAP[key];
+  if (!suffix) return null;
+
+  const prefix = detectVehiclePrefix(hass);
+  if (!prefix) return null;
+
+  const entityId = `sensor.${prefix}_${suffix}`;
+  return hass.states[entityId] ? entityId : null;
+}
+
 const getVehicleEntities = memoizeOne(
-  async (hass: HomeAssistant, config: { entity: string }, component: VehicleCard): Promise<VehicleEntities> => {
-    const entityState = hass.states[config.entity];
-    if (!entityState) {
-      component._entityNotFound = true;
-      console.log('Entity not found', component._entityNotFound);
-    }
-
-    const allEntities = await hass.callWS<Required<VehicleEntity>[]>({
-      type: 'config/entity_registry/list',
-    });
-    const carEntity = allEntities.find((e) => e.entity_id === config.entity);
-    if (!carEntity) {
-      console.log('Car entity not found');
-      return {};
-    }
-
-    const deviceEntities = allEntities
-      .filter((e) => e.device_id === carEntity.device_id && e.hidden_by === null && e.disabled_by === null)
-      .filter((e) => hass.states[e.entity_id] && !['unavailable', 'unknown'].includes(hass.states[e.entity_id].state));
-
+  async (hass: HomeAssistant, _config: { entity: string }, component: VehicleCard): Promise<VehicleEntities> => {
     const entityIds: VehicleEntities = {};
 
-    for (const entityName of Object.keys(combinedFilters)) {
-      const { prefix, suffix, aliases } = combinedFilters[entityName];
+    const prefix = detectVehiclePrefix(hass);
 
-      if (entityName === 'soc' || entityName === 'maxSoc') {
-        const specialName = entityName === 'soc' ? 'State of Charge' : 'Max State of Charge';
-        const entity = deviceEntities.find((e) => e.original_name === specialName);
-        if (entity) {
-          entityIds[entityName] = {
-            entity_id: entity.entity_id,
-            original_name: entity.original_name,
-          };
-        }
-        continue;
+    if (!prefix) {
+      component._entityNotFound = true;
+      return entityIds;
+    }
+
+    const registerEntity = (key: string, entityId: string) => {
+      const friendlyName = hass.states[entityId]?.attributes?.friendly_name || key;
+      entityIds[key] = {
+        entity_id: entityId,
+        original_name: friendlyName,
+      };
+    };
+
+    Object.keys(CARDATA_ENTITY_MAP).forEach((key) => {
+      const entityId = resolveEntity(hass, key);
+      if (entityId) {
+        registerEntity(key, entityId);
       }
+    });
 
-      const entity = deviceEntities.find((e) => {
-        if (prefix && e.entity_id.startsWith(prefix) && e.entity_id.endsWith(suffix)) {
-          return true;
-        }
+    const windowEntities = CARDATA_WINDOW_SUFFIXES.map((suffix) => `sensor.${prefix}_${suffix}`).filter(
+      (entityId) => hass.states[entityId]
+    );
 
-        const defaultMatch = e.unique_id.endsWith(suffix) || e.entity_id.endsWith(suffix);
-        if (defaultMatch) return true;
+    component.windowEntities = windowEntities;
 
-        if (aliases && aliases.some((alias) => e.entity_id.endsWith(alias) || e.unique_id.endsWith(alias))) {
-          return true;
-        }
+    if (windowEntities.length) {
+      registerEntity('windowsClosed', windowEntities[0]);
+    }
 
-        return false;
-      });
-
-      if (entity) {
-        entityIds[entityName] = {
-          entity_id: entity.entity_id,
-          original_name: entity.original_name,
-        };
-      }
+    if (!entityIds.lockSensor && entityIds.doorStatusOverall) {
+      registerEntity('lockSensor', entityIds.doorStatusOverall.entity_id);
     }
 
     return entityIds;
