@@ -1,6 +1,6 @@
 {
   "name": "bmw-cardata-info-card",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Lovelace custom card for displaying BMW vehicle information provided by the BMW Cardata integration",
   "keywords": [
     "home-assistant",
