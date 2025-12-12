@@ -16,9 +16,6 @@
             "stateUnknown": "Nieznany",
             "stateUnlocked": "Odblokowane",
             "statePressed": "Naciśnięte",
-            "titleRemoteControl": "Zdalne sterowanie",
-            "titleServices": "Usługi",
-            "toastCommandSent": "Polecenie wysłane pomyślnie!",
             "toastImageError": "Błąd przesyłania obrazu. Dozwolone są tylko pliki PNG i JPEG.",
             "toastCardAlreadyExists": "Karta już istnieje, wybierz inną nazwę"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Zamek wlewu paliwa",
             "doorlockstatusrearleft": "Zamek tylnych lewych drzwi",
             "doorlockstatusrearright": "Zamek tylnych prawych drzwi"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Program ładowania",
-            "labelCity": "Miasto",
-            "labelClose": "Zamknij",
-            "labelDepartureTime": "Czas odjazdu",
-            "labelDurationTime": "Czas trwania",
-            "labelLatitude": "Szerokość geograficzna",
-            "labelLockCar": "Zablokuj samochód",
-            "labelLongitude": "Długość geograficzna",
-            "labelMaxStateOfCharge": "Maksymalny stan naładowania",
-            "labelMoreInfo": "Więcej informacji",
-            "labelMove": "Przesuń",
-            "labelNoSelection": "Brak wyboru",
-            "labelOpen": "Otwórz",
-            "labelPostCode": "Kod pocztowy",
-            "labelSave": "Zapisz",
-            "labelSend": "Wyślij",
-            "labelSetMaxSoc": "Ustaw maksimum",
-            "labelSetProgram": "Ustaw program",
-            "labelStart": "Start",
-            "labelStartTime": "Czas rozpoczęcia",
-            "labelStop": "Stop",
-            "labelStopTime": "Czas zakończenia",
-            "labelStreet": "Ulica",
-            "labelTilt": "Pochylenie",
-            "labelTime1": "Czas 1",
-            "labelTime2": "Czas 2",
-            "labelTime3": "Czas 3",
-            "labelTimeSelection": "Wybór czasu",
-            "labelTitle": "Tytuł",
-            "labelUnlockCar": "Odblokuj samochód",
-            "labelWindowFrontLeft": "Przednie lewe",
-            "labelWindowFrontRight": "Przednie prawe",
-            "labelWindowRearLeft": "Tylne lewe",
-            "labelWindowRearRight": "Tylne prawe",
-            "labelSeatConfig": "Zapisz konfigurację siedzenia",
-            "labelSetTempZone": "Zapisz strefę temperatury",
-            "labelPreclimateStatus": "Stan przedklimatyczny"
-        },
-        "servicesCtrl": {
-            "auxheat": "Ogrzewanie pomocnicze",
-            "charge": "Ładowanie",
-            "doorsLock": "Zabezpieczenia",
-            "engine": "Sterowanie silnikiem",
-            "preheat": "Przygotowanie",
-            "sendRoute": "Wyślij trasę",
-            "sigPos": "Pozycja sygnału",
-            "sunroof": "Szyberdach",
-            "windows": "Okna"
         },
         "starterBattery": {
             "notAvailable": "Niedostępny",
@@ -244,7 +191,6 @@
             "infoButton": "Wybierz kartę, którą chcesz skonfigurować.",
             "infoImages": "Nie ma potrzeby dodawania '-' dla każdej linii. Każda linia będzie automatycznie traktowana jako oddzielny URL.",
             "infoMap": "To jest konfiguracja dla okienka mapy.",
-            "infoServices": "Wybierz, które usługi chcesz włączyć. Jeśli usługa jest wyłączona, nie będzie wyświetlana na karcie.",
             "uncheckAll": "Odznacz wszystko"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Wybierz konfigurację dla mapy",
             "title": "Konfiguracja mapy"
         },
-        "servicesConfig": {
-            "desc": "Wybierz usługi, które chcesz włączyć.",
-            "title": "Konfiguracja usług"
-        },
         "showConfig": {
             "desc": "Wybierz elementy, które chcesz wyświetlić.",
             "title": "Konfiguracja wyświetlania"
         },
         "showOpts": {
             "enable_map_popup": "Włącz wyskakujące okienko mapy",
-            "enable_services_control": "Włącz kontrolę usług",
             "show_background": "Pokaż tło",
             "show_buttons": "Pokaż przyciski",
             "show_error_notify": "Pokaż powiadomienie o błędzie",

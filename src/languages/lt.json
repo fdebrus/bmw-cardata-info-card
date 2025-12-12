@@ -16,9 +16,6 @@
             "stateUnknown": "Nežinomas",
             "stateUnlocked": "Atrakinta",
             "statePressed": "Paspausta",
-            "titleRemoteControl": "Nuotolinis valdymas",
-            "titleServices": "Paslaugos",
-            "toastCommandSent": "Komanda išsiųsta sėkmingai!",
             "toastImageError": "Klaida įkeliant vaizdą. Leidžiami tik PNG ir JPEG failai.",
             "toastCardAlreadyExists": "Kortelė jau egzistuoja, pasirinkite kitą pavadinimą"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Dujų užraktas",
             "doorlockstatusrearleft": "Durų užraktas gale kairėje",
             "doorlockstatusrearright": "Durų užraktas gale dešinėje"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Įkrovimo programa",
-            "labelCity": "Miestas",
-            "labelClose": "Uždaryti",
-            "labelDepartureTime": "Išvykimo laikas",
-            "labelDurationTime": "Trukmės laikas",
-            "labelLatitude": "Platuma",
-            "labelLockCar": "Automobilio užrakinimas",
-            "labelLongitude": "Ilguma",
-            "labelMaxStateOfCharge": "Maksimali įkrovos būsena",
-            "labelMoreInfo": "Daugiau informacijos",
-            "labelMove": "Perkelti",
-            "labelNoSelection": "Nėra pasirinkimo",
-            "labelOpen": "Atviras",
-            "labelPostCode": "Pašto kodas",
-            "labelSave": "Išsaugoti",
-            "labelSend": "Siųsti",
-            "labelSetMaxSoc": "Nustatykite didžiausią",
-            "labelSetProgram": "Nustatyti programą",
-            "labelStart": "Pradėti",
-            "labelStartTime": "Pradžios laikas",
-            "labelStop": "Sustabdyti",
-            "labelStopTime": "Sustojimo laikas",
-            "labelStreet": "Gatvė",
-            "labelTilt": "Pakreipti",
-            "labelTime1": "Laikas 1",
-            "labelTime2": "Laikas 2",
-            "labelTime3": "Laikas 3",
-            "labelTimeSelection": "Laiko pasirinkimas",
-            "labelTitle": "Pavadinimas",
-            "labelUnlockCar": "Automobilio atrakinimas",
-            "labelWindowFrontLeft": "Priekinė kairė",
-            "labelWindowFrontRight": "Priekinė dešinė",
-            "labelWindowRearLeft": "Galinė kairė",
-            "labelWindowRearRight": "Galinė dešinė",
-            "labelSeatConfig": "Išsaugoti sėdynės konfigūraciją",
-            "labelSetTempZone": "Išsaugoti temperatūros zoną",
-            "labelPreclimateStatus": "Ikiklimatinė būklė"
-        },
-        "servicesCtrl": {
-            "auxheat": "Papildomas šildymas",
-            "charge": "Įkrovimas",
-            "doorsLock": "Sauga",
-            "engine": "Variklio valdymas",
-            "preheat": "Pirminis kondicionavimas",
-            "sendRoute": "Siųsti maršrutą",
-            "sigPos": "Signalo padėtis",
-            "sunroof": "Stoglangis",
-            "windows": "Langai"
         },
         "starterBattery": {
             "notAvailable": "Nerastas",
@@ -244,7 +191,6 @@
             "infoButton": "Pasirinkite kortelę, kurią norite konfigūruoti.",
             "infoImages": "Kiekvienoje eilutėje nereikia pridėti. Kiekviena eilutė automatiškai bus laikoma atskiru URL.",
             "infoMap": "TTai iššokančio žemėlapio konfigūracija.",
-            "infoServices": "Pasirinkite, kurias paslaugas norite įjungti. Jei paslauga išjungta, ji nebus rodoma kortelėje.",
             "uncheckAll": "Atsisakykite visų"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Pasirinkite žemėlapio konfigūraciją",
             "title": "Žemėlapio konfigūracija"
         },
-        "servicesConfig": {
-            "desc": "Pasirinkite paslaugas, kurias norite įjungti.",
-            "title": "Paslaugų konfigūracija"
-        },
         "showConfig": {
             "desc": "Pasirinkite elementus, kuriuos norite rodyti.",
             "title": "Rodyti konfigūraciją"
         },
         "showOpts": {
             "enable_map_popup": "Įjungti iššokantį žemėlapio langą",
-            "enable_services_control": "Paslaugų valdymo įjungimas",
             "show_background": "Rodyti foną",
             "show_buttons": "Rodyti mygtukus",
             "show_error_notify": "Rodyti pranešimą apie klaidą",

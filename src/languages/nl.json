@@ -16,9 +16,6 @@
             "stateUnknown": "Onbekend",
             "stateUnlocked": "Ontgrendeld",
             "statePressed": "Ingedrukt",
-            "titleRemoteControl": "Afstandsbediening",
-            "titleServices": "Diensten",
-            "toastCommandSent": "Opdracht succesvol verstuurd!",
             "toastImageError": "Fout bij het opladen van de afbeelding. Enkel PNG en JPEG bestanden zijn toegelaten.",
             "toastCardAlreadyExists": "Kaart bestaat al"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Vergrendelingsstatus tankklep",
             "doorlockstatusrearleft": "Vergrendelingsstatus links achteraan",
             "doorlockstatusrearright": "Vergrendelingsstatus rechts achteraan"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Oplaadprogramma",
-            "labelCity": "Stad",
-            "labelClose": "Sluiten",
-            "labelDepartureTime": "Vertrektijd",
-            "labelDurationTime": "Duur",
-            "labelLatitude": "Breedtegraad",
-            "labelLockCar": "Vergrendel wagen",
-            "labelLongitude": "Lengtegraad",
-            "labelMaxStateOfCharge": "Maximale oplaadtoestand",
-            "labelMoreInfo": "Meer info",
-            "labelMove": "Beweeg",
-            "labelNoSelection": "Niets geselecteerd",
-            "labelOpen": "Open",
-            "labelPostCode": "Postcode",
-            "labelSave": "Bewaren",
-            "labelSend": "Verzenden",
-            "labelSetMaxSoc": "Maximale oplaadtoestand selecteren",
-            "labelSetProgram": "Programma selecteren",
-            "labelStart": "Start",
-            "labelStartTime": "Starttijd",
-            "labelStop": "Stop",
-            "labelStopTime": "Eindtijd",
-            "labelStreet": "Straat",
-            "labelTilt": "Kantelen",
-            "labelTime1": "Tijd 1",
-            "labelTime2": "Tijd 2",
-            "labelTime3": "Tijd 3",
-            "labelTimeSelection": "Tijdselectie",
-            "labelTitle": "Titel",
-            "labelUnlockCar": "Wagen ontgrendelen",
-            "labelWindowFrontLeft": "Links vooraan",
-            "labelWindowFrontRight": "Rechts vooraan",
-            "labelWindowRearLeft": "Links achteraan",
-            "labelWindowRearRight": "Rechts achteraan",
-            "labelSeatConfig": "Stoelconfiguratie opslaan",
-            "labelSetTempZone": "Temperatuurzone opslaan",
-            "labelPreclimateStatus": "Status vóór het klimaat"
-        },
-        "servicesCtrl": {
-            "auxheat": "Standverwarming",
-            "charge": "Opladen",
-            "doorsLock": "Vergrendelingsstatus",
-            "engine": "Motor",
-            "preheat": "Interieur Voorklimatisering",
-            "sendRoute": "Adres aan voertuig doorgeven",
-            "sigPos": "Verlichting",
-            "sunroof": "Schuifdak",
-            "windows": "Ruiten"
         },
         "starterBattery": {
             "notAvailable": "Niet beschikbaar",
@@ -244,7 +191,6 @@
             "infoButton": "Selecteer de kaart die u wilt configureren.",
             "infoImages": "Het is niet nodig om een '-' toe te voegen vóór elke lijn. Elke lijn zal automatisch als een aparte URL worden beschouwd.",
             "infoMap": "Dit is de configuratie voor kaart pop-up.",
-            "infoServices": "Kies welke diensten u wilt inschakelen. Als een dienst is uitgeschakeld, zal deze niet worden weergeven op de kaart.",
             "uncheckAll": "Alles uitvinken"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Kies de configuratie voor de kaart",
             "title": "Kaartconfiguratie"
         },
-        "servicesConfig": {
-            "desc": "Kies de diensten die u wilt inschakelen.",
-            "title": "Dienstenconfiguratie"
-        },
         "showConfig": {
             "desc": "Kies de elementen die u wilt weergeven.",
             "title": "Configuratie weergeven"
         },
         "showOpts": {
             "enable_map_popup": "Kaart popup inschakelen",
-            "enable_services_control": "Diensten controle inschakelen",
             "show_background": "Achtergrond weergeven",
             "show_buttons": "Knoppen weergeven",
             "show_error_notify": "Foutmelding weergeven",

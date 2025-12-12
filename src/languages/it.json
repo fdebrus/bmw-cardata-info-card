@@ -16,9 +16,6 @@
             "stateUnknown": "Sconosciuto",
             "stateUnlocked": "Sbloccato",
             "statePressed": "Premuto",
-            "titleRemoteControl": "Controllo remoto",
-            "titleServices": "Servizi",
-            "toastCommandSent": "Comando inviato con successo!",
             "toastImageError": "Errore durante il caricamento dell'immagine. Sono consentiti solo file PNG e JPEG.",
             "toastCardAlreadyExists": "La card esiste già"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Tappo del serbatoio chiuso",
             "doorlockstatusrearleft": "Porta posteriore sinistra chiusa",
             "doorlockstatusrearright": "Porta posteriore destra chiusa"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Modalità di ricarica",
-            "labelCity": "Città",
-            "labelClose": "Chiuso",
-            "labelDepartureTime": "Orario di partenza",
-            "labelDurationTime": "Durata",
-            "labelLatitude": "Latitudine",
-            "labelLockCar": "Blocca l'auto",
-            "labelLongitude": "Longitudine",
-            "labelMaxStateOfCharge": "Percentuale di ricarica massima",
-            "labelMoreInfo": "Altre informazioni",
-            "labelMove": "Muovi",
-            "labelNoSelection": "Nessuna selezione",
-            "labelOpen": "Aperto",
-            "labelPostCode": "CAP",
-            "labelSave": "Salva",
-            "labelSend": "Invia",
-            "labelSetMaxSoc": "Imposta ricarica massima",
-            "labelSetProgram": "Imposta programma",
-            "labelStart": "Avvia",
-            "labelStartTime": "Orario di partenza",
-            "labelStop": "Stop",
-            "labelStopTime": "Stop time",
-            "labelStreet": "Strada",
-            "labelTilt": "Inclinazione",
-            "labelTime1": "Durata 1",
-            "labelTime2": "Durata 2",
-            "labelTime3": "Durata 3",
-            "labelTimeSelection": "Seleziona tempo",
-            "labelTitle": "Titolo",
-            "labelUnlockCar": "Sblocca l'auto",
-            "labelWindowFrontLeft": "Anteriore sinistro",
-            "labelWindowFrontRight": "Anteriore destro",
-            "labelWindowRearLeft": "Posteriore sinistro",
-            "labelWindowRearRight": "Posteriore destro",
-            "labelSeatConfig": "Salva configurazione del sedile",
-            "labelSetTempZone": "Salva zona di temperatura",
-            "labelPreclimateStatus": "Stato preclimatico"
-        },
-        "servicesCtrl": {
-            "auxheat": "riscaldamento ausiliario",
-            "charge": "Carica",
-            "doorsLock": "Serrature",
-            "engine": "controllo motore",
-            "preheat": "precondizionamento",
-            "sendRoute": "invia percorso",
-            "sigPos": "Posizione del segnale",
-            "sunroof": "Tetto apribile",
-            "windows": "Finestrini"
         },
         "starterBattery": {
             "notAvailable": "Non disponibile",
@@ -244,7 +191,6 @@
             "infoButton": "Seleziona la card che vuoi configurare.",
             "infoImages": "Non è necessario aggiungere un '-' per ogni riga. Ogni riga verrà trattata automaticamente come un URL separato.",
             "infoMap": "Questa è la configurazione per il popup della mappa.",
-            "infoServices": "Scegli quali servizi desideri abilitare. Se un servizio è disabilitato, non verrà visualizzato nella scheda.",
             "uncheckAll": "Deseleziona tutto"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Scegli la configurazione per la mappa",
             "title": "Configurazione Mappa"
         },
-        "servicesConfig": {
-            "desc": "Scegli i servizi che desideri abilitare.",
-            "title": "Configurazione Servizi"
-        },
         "showConfig": {
             "desc": "Scegli gli elementi che desideri visualizzare.",
             "title": "Mostra configurazione"
         },
         "showOpts": {
             "enable_map_popup": "Abilita il popup della mappa",
-            "enable_services_control": "Abilita il controllo dei servizi",
             "show_background": "Mostra background",
             "show_buttons": "Mosta pulsanti",
             "show_error_notify": "Mostra notifiche di errore",

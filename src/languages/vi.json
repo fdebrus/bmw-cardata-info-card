@@ -16,9 +16,6 @@
             "stateUnknown": "Không rõ",
             "stateUnlocked": "Đã mở khóa",
             "statePressed": "Đã nhấn",
-            "titleRemoteControl": "Điều khiển từ xa",
-            "titleServices": "Dịch vụ",
-            "toastCommandSent": "Lệnh đã được gửi thành công!",
             "toastImageError": "Lỗi khi tải ảnh lên. Chỉ cho phép tệp PNG và JPEG.",
             "toastCardAlreadyExists": "Thẻ đã tồn tại, hãy chọn tên khác"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Khóa nhiên liệu",
             "doorlockstatusrearleft": "Khóa cửa sau trái",
             "doorlockstatusrearright": "Khóa cửa sau phải"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Chương trình sạc",
-            "labelCity": "Thành phố",
-            "labelClose": "Đóng",
-            "labelDepartureTime": "Thời gian khởi hành",
-            "labelDurationTime": "Thời gian kéo dài",
-            "labelLatitude": "Vĩ độ",
-            "labelLockCar": "Khóa xe",
-            "labelLongitude": "Kinh độ",
-            "labelMaxStateOfCharge": "Trạng thái sạc tối đa",
-            "labelMoreInfo": "Thêm thông tin",
-            "labelMove": "Di chuyển",
-            "labelNoSelection": "Không có lựa chọn",
-            "labelOpen": "Mở",
-            "labelPostCode": "Mã bưu điện",
-            "labelSave": "Lưu",
-            "labelSend": "Gửi",
-            "labelSetMaxSoc": "Đặt tối đa",
-            "labelSetProgram": "Đặt chương trình",
-            "labelStart": "Bắt đầu",
-            "labelStartTime": "Thời gian bắt đầu",
-            "labelStop": "Dừng lại",
-            "labelStopTime": "Thời gian dừng",
-            "labelStreet": "Đường phố",
-            "labelTilt": "Nghiêng",
-            "labelTime1": "Thời gian 1",
-            "labelTime2": "Thời gian 2",
-            "labelTime3": "Thời gian 3",
-            "labelTimeSelection": "Chọn thời gian",
-            "labelTitle": "Tiêu đề",
-            "labelUnlockCar": "Mở khóa xe",
-            "labelWindowFrontLeft": "Trước trái",
-            "labelWindowFrontRight": "Trước phải",
-            "labelWindowRearLeft": "Sau trái",
-            "labelWindowRearRight": "Sau phải",
-            "labelSeatConfig": "Lưu cấu hình ghế ngồi",
-            "labelSetTempZone": "Lưu khu vực nhiệt độ",
-            "labelPreclimateStatus": "Tình trạng tiền khí hậu"
-        },
-        "servicesCtrl": {
-            "auxheat": "Sưởi phụ",
-            "charge": "Sạc",
-            "doorsLock": "An ninh",
-            "engine": "Kiểm soát động cơ",
-            "preheat": "Điều hòa trước",
-            "sendRoute": "Gửi lộ trình",
-            "sigPos": "Vị trí tín hiệu",
-            "sunroof": "Cửa sổ trời",
-            "windows": "Cửa sổ"
         },
         "starterBattery": {
             "notAvailable": "Không có sẵn",
@@ -244,7 +191,6 @@
             "infoButton": "Chọn thẻ bạn muốn cấu hình.",
             "infoImages": "Không cần thêm '-' cho mỗi dòng. Mỗi dòng sẽ được coi là một URL riêng biệt tự động.",
             "infoMap": "Đây là cấu hình cho cửa sổ bật lên bản đồ.",
-            "infoServices": "Chọn dịch vụ bạn muốn kích hoạt. Nếu dịch vụ bị tắt, nó sẽ không được hiển thị trong thẻ.",
             "uncheckAll": "Bỏ chọn tất cả"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Chọn cấu hình cho bản đồ",
             "title": "Cấu hình bản đồ"
         },
-        "servicesConfig": {
-            "desc": "Chọn các dịch vụ bạn muốn kích hoạt.",
-            "title": "Cấu hình dịch vụ"
-        },
         "showConfig": {
             "desc": "Chọn các mục bạn muốn hiển thị.",
             "title": "Cấu hình hiển thị"
         },
         "showOpts": {
             "enable_map_popup": "Bật cửa sổ bản đồ",
-            "enable_services_control": "Bật điều khiển dịch vụ",
             "show_background": "Hiển thị nền",
             "show_buttons": "Hiển thị nút",
             "show_error_notify": "Hiển thị thông báo lỗi",

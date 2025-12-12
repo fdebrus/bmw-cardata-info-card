@@ -16,9 +16,6 @@
             "stateUnknown": "Unknown",
             "stateUnlocked": "Unlocked",
             "statePressed": "Pressed",
-            "titleRemoteControl": "Remote control",
-            "titleServices": "Services",
-            "toastCommandSent": "Command sent sucess!",
             "toastImageError": "Error uploading image. Only PNG and JPEG files are allowed.",
             "toastCardAlreadyExists": "Card already exists"
         },
@@ -58,56 +55,6 @@
             "doorlockstatusgas": "Fuel flap lock",
             "doorlockstatusrearleft": "Door lock rear left",
             "doorlockstatusrearright": "Door lock rear right"
-        },
-        "serviceData": {
-            "labelChargeProgram": "Charge programme",
-            "labelCity": "City",
-            "labelClose": "Close",
-            "labelDepartureTime": "Departure time",
-            "labelDurationTime": "Duration time",
-            "labelLatitude": "Latitude",
-            "labelLockCar": "Lock car",
-            "labelLongitude": "Longitude",
-            "labelMaxStateOfCharge": "Max state of charge",
-            "labelMoreInfo": "More info",
-            "labelMove": "Move",
-            "labelNoSelection": "No selection",
-            "labelOpen": "Open",
-            "labelPostCode": "Post code",
-            "labelSave": "Save",
-            "labelSend": "Send",
-            "labelSetMaxSoc": "Set maximum",
-            "labelSetProgram": "Set program",
-            "labelStart": "Start",
-            "labelStartTime": "Start time",
-            "labelStop": "Stop",
-            "labelStopTime": "Stop time",
-            "labelStreet": "Street",
-            "labelTilt": "Tilt",
-            "labelTime1": "Time 1",
-            "labelTime2": "Time 2",
-            "labelTime3": "Time 3",
-            "labelTimeSelection": "Time selection",
-            "labelTitle": "Title",
-            "labelUnlockCar": "Unlock car",
-            "labelWindowFrontLeft": "Front left",
-            "labelWindowFrontRight": "Front right",
-            "labelWindowRearLeft": "Rear left",
-            "labelWindowRearRight": "Rear right",
-            "labelSeatConfig": "Save seat configuration",
-            "labelSetTempZone": "Save temperature zone",
-            "labelPreclimateStatus": "Preclimate status"
-        },
-        "servicesCtrl": {
-            "auxheat": "Auxiliary heating",
-            "charge": "Charge",
-            "doorsLock": "Security",
-            "engine": "Engine control",
-            "preheat": "Pre-conditioning",
-            "sendRoute": "Send route",
-            "sigPos": "Signal position",
-            "sunroof": "Sunroof",
-            "windows": "Windows"
         },
         "starterBattery": {
             "notAvailable": "Not available",
@@ -244,7 +191,6 @@
             "infoButton": "Select the card you want to configure.",
             "infoImages": "There is no need to add a '-' for each line. Each line will be treated as a separate URL automatically.",
             "infoMap": "This is configuration for map popup.",
-            "infoServices": "Choose which services you want to enable. If a service is disabled, it will not be shown in the card.",
             "uncheckAll": "Uncheck all"
         },
         "imagesConfig": {
@@ -258,17 +204,12 @@
             "desc": "Choose the configuration for the map",
             "title": "Map configuration"
         },
-        "servicesConfig": {
-            "desc": "Choose the services you want to enable.",
-            "title": "Services configuration"
-        },
         "showConfig": {
             "desc": "Choose the items you want to display.",
             "title": "Show configuration"
         },
         "showOpts": {
             "enable_map_popup": "Enable map popup",
-            "enable_services_control": "Enable services control",
             "show_background": "Show background",
             "show_buttons": "Show buttons",
             "show_error_notify": "Show error notification",

@@ -81,8 +81,8 @@ When new keys are added to the base `string.json`, you need to update the langua
    {
      "cs.json": [
        {
-         "key": "editor.common.infoServices",
-         "value": "Choose which services you want to enable. If a service is disabled, it will not be shown in the card."
+         "key": "editor.common.infoMap",
+         "value": "This is configuration for map popup."
        }
      ],
      "sk.json": [
