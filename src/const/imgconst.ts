@@ -72,24 +72,6 @@ const spinnerSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120
   <path d='M110 60a50 50 0 0 1-50 50' fill='none' stroke='#2a86ff' stroke-width='10' stroke-linecap='round'/>
 </svg>`;
 
-const mapOverlaySvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-  <defs>
-    <linearGradient id='mist' x1='0' y1='0' x2='0' y2='1'>
-      <stop offset='0%' stop-color='#0b1220' stop-opacity='0.85'/>
-      <stop offset='60%' stop-color='#0b1220' stop-opacity='0.35'/>
-      <stop offset='100%' stop-color='#0b1220' stop-opacity='0'/>
-    </linearGradient>
-    <radialGradient id='pulse' cx='0.7' cy='0.2' r='0.8'>
-      <stop offset='0%' stop-color='#2a86ff' stop-opacity='0.4'/>
-      <stop offset='100%' stop-color='#2a86ff' stop-opacity='0'/>
-    </radialGradient>
-  </defs>
-  <rect width='800' height='450' fill='#0f172a'/>
-  <rect width='800' height='450' fill='url(#mist)'/>
-  <circle cx='640' cy='70' r='260' fill='url(#pulse)'/>
-  <circle cx='140' cy='120' r='180' fill='url(#pulse)' opacity='0.7'/>
-</svg>`;
-
 // -----------------------------------------------------------------------------
 // Encoded simple icons (already as data URIs)
 // -----------------------------------------------------------------------------
@@ -108,7 +90,6 @@ export const amgBlack = toDataUri(darkSvg);
 export const amgWhite = toDataUri(lightSvg);
 export const tyreBg = toDataUri(tyreSvg);
 export const logoLoading = toDataUri(spinnerSvg);
-export const mapOverlay = toDataUri(mapOverlaySvg);
 
 // -----------------------------------------------------------------------------
 // Central image map and types
@@ -119,7 +100,6 @@ export const IMAGE = {
   amgWhite,
   tyreBg,
   logoLoading,
-  mapOverlay,
   carBlockedIcon,
   carLocationIcon,
 };

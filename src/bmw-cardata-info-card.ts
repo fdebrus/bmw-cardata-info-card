@@ -597,43 +597,8 @@ export class VehicleCard extends LitElement implements LovelaceCard {
     if (!this.config.images || (!this.config?.show_slides && this.config.show_slides !== undefined)) return html``;
 
     return html`
-      <div id=${SECTION.IMAGES_SLIDER} class="vehicle-hero">
-        ${this._renderVehicleStatusStrip()}
-        <div class="vehicle-image-panel">
-          <header-slide .config=${this.config} .editMode=${this.editMode}></header-slide>
-        </div>
-      </div>
-    `;
-  }
-
-  private _renderVehicleStatusStrip(): TemplateResult {
-    const lockInfo = this.getEntityInfoByKey({ key: 'lockSensor', name: '', icon: 'mdi:lock' });
-
-    const parkKey: 'ignitionState' | 'parkBrake' = this.vehicleEntities.ignitionState ? 'ignitionState' : 'parkBrake';
-    const parkedInfo = this.getEntityInfoByKey({ key: parkKey, name: '', icon: this.vehicleEntities.ignitionState ? 'mdi:car' : 'mdi:parking' });
-
-    const rangeKey = this.vehicleEntities.rangeElectric ? 'rangeElectric' : this.vehicleEntities.rangeLiquid ? 'rangeLiquid' : undefined;
-    const rangeEntity = rangeKey ? this.vehicleEntities[rangeKey] : undefined;
-    const rangeState = rangeKey ? this.getStateDisplay(rangeEntity?.entity_id) : '';
-    const rangeIcon = rangeKey === 'rangeElectric' ? 'mdi:ev-station' : 'mdi:gas-station';
-
-    const statusItems = [
-      { icon: lockInfo.icon ?? 'mdi:lock', label: lockInfo.state || this.localize('card.common.stateUnknown') },
-      { icon: parkedInfo.icon ?? 'mdi:car', label: parkedInfo.state || this.localize('card.common.stateUnknown') },
-      { icon: rangeIcon, label: rangeState || this.localize('card.common.stateUnknown') },
-    ];
-
-    return html`
-      <div class="vehicle-status-strip">
-        ${statusItems.map(
-          (item) => html`
-            <div class="vehicle-status-item">
-              <ha-icon icon="${item.icon}"></ha-icon>
-              <span>${item.label}</span>
-            </div>
-          `
-        )}
-        <div class="vehicle-status-separator" role="presentation"></div>
+      <div id=${SECTION.IMAGES_SLIDER}>
+        <header-slide .config=${this.config} .editMode=${this.editMode}></header-slide>
       </div>
     `;
   }
