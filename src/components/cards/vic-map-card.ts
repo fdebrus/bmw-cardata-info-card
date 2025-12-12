@@ -8,6 +8,7 @@ import { customElement, state, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
 import { VehicleCard } from '../../bmw-cardata-info-card';
+import { IMAGE } from '../../const/imgconst';
 import { MAPTILER_DIALOG_STYLES, DEFAULT_DIALOG_STYLES, DEFAULT_HOURS_TO_SHOW } from '../../const/maptiler-const';
 import {
   HistoryStates,
@@ -259,6 +260,9 @@ export class VehicleMap extends LitElement {
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     return html`
       <div class="map-wrapper" ?safari=${isSafari} style=${this._computeMapStyle()}>
+        <div class="map-background">
+          <div class="map-fade"></div>
+        </div>
         <div id="overlay-container">
           <div class="reset-button" @click=${this.resetMap} .hidden=${this._locateIconVisible}>
             <ha-icon icon="mdi:compass"></ha-icon>
@@ -378,6 +382,7 @@ export class VehicleMap extends LitElement {
       '--vic-marker-filter': markerFilter,
       '--vic-map-tiles-filter': tileFilter,
       '--vic-map-mask-image': maskImage,
+      '--vic-map-overlay-image': `url(${IMAGE.mapOverlay})`,
       '--vic-map-height': minimapHeight ? `${minimapHeight}px` : `150px`,
       height: minimapHeight ? `${minimapHeight}px` : `150px`,
     });
@@ -397,6 +402,7 @@ export class VehicleMap extends LitElement {
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
         }
 
         .map-wrapper[safari] {
@@ -410,6 +416,25 @@ export class VehicleMap extends LitElement {
           justify-content: center;
         }
 
+        .map-background {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          background-image: var(--vic-map-overlay-image);
+          background-size: cover;
+          background-position: center;
+          pointer-events: none;
+        }
+
+        .map-fade {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.35), transparent 55%),
+            linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 60%);
+          pointer-events: none;
+          z-index: 1;
+        }
+
         #overlay-container {
           position: absolute;
           top: 0;
@@ -418,6 +443,7 @@ export class VehicleMap extends LitElement {
           height: 100%;
           /* background-color: var(--ha-card-background, var(--card-background-color)); */
           /* opacity: 0.6;  */
+          z-index: 3;
         }
 
         #map {
@@ -426,6 +452,8 @@ export class VehicleMap extends LitElement {
           background-color: transparent !important;
           mask-image: var(--vic-map-mask-image);
           mask-composite: intersect;
+          position: relative;
+          z-index: 2;
         }
 
         .map-tiles {
