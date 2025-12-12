@@ -86,8 +86,8 @@ export const carLocationIcon =
 // Data URI exports for main backgrounds
 // -----------------------------------------------------------------------------
 
-export const amgBlack = toDataUri(darkSvg);
-export const amgWhite = toDataUri(lightSvg);
+export const bmwDark = toDataUri(darkSvg);
+export const bmwLight = toDataUri(lightSvg);
 export const tyreBg = toDataUri(tyreSvg);
 export const logoLoading = toDataUri(spinnerSvg);
 
@@ -96,8 +96,8 @@ export const logoLoading = toDataUri(spinnerSvg);
 // -----------------------------------------------------------------------------
 
 export const IMAGE = {
-  amgBlack,
-  amgWhite,
+  bmwDark,
+  bmwLight,
   tyreBg,
   logoLoading,
   carBlockedIcon,
